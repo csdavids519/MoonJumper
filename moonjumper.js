@@ -45,7 +45,7 @@ let lander = {
 // physics
 let velocityX = -2; // jumping objects moving left speed
 let velocityY = 0; // spaceman jump speed
-let gravity = 0.4;
+let gravity;
 
 
 // ON WINDOW LOAD
@@ -56,6 +56,9 @@ window.onload = function () {
     context = board.getContext("2d"); // used to draw on the canvas
     requestAnimationFrame(update);
     setInterval(placeJumpObjects, 1500); // every 1.5 seconds call placeJumpObjects
+    document.addEventListener("keydown", jumpSpaceMan); // check for button press to move space man
+    // document.addEventListener("keydown", rocketSpaceMan);
+    // document.addEventListener("keyup", endRocketSpaceMan);
 }
 
 
@@ -64,17 +67,17 @@ function update() { // this created the function "update"
     requestAnimationFrame(update);
     context.clearRect(0, 0, board.width, board.height);
 
-    !! // replace box with image
-    // draw space man image each frame
-    // context.fillStyle = "red";
+
+    // add gravity
+    if (spaceMan.y < spaceManY - 20) {
+        gravity = 0.5;
+    } else {
+        gravity = 0;
+    }
+    velocityY += gravity;
+    spaceMan.y += velocityY;
+    // context.fillRect(bird.x, bird.y, bird.width, bird.height); // after the canvas is clear, draw the fish bird again with
     context.fillRect(spaceMan.x, spaceMan.y, spaceMan.width, spaceMan.height);
-
-
-    // replace box with image
-    // draw lander image each frame
-    // context.fillStyle = "red";
-
-
 
     // move objects each frame
     for (let i = 0; i < jumpObjectArray.length; i++) {
@@ -84,7 +87,6 @@ function update() { // this created the function "update"
     }
 
 }
-
 
 // function to create new objects to jump
 function placeJumpObjects() {
@@ -102,4 +104,17 @@ function placeJumpObjects() {
 
     jumpObjectArray.push(landerJumpObject);
 
+}
+
+// add key stroke controls
+function jumpSpaceMan(event) {
+    if (event.code == "Space") {
+        //jump
+        velocityY = -1;
+    }
+
+    if (event.code == "ShiftRight" || "ShiftLeft") {
+        // rocket jump
+        velocityY = -1;
+    }
 }

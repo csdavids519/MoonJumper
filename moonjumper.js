@@ -27,7 +27,6 @@ const landerY = boardFloor - landerHeight;
 let landerImage;
 
 
-
 // debug
 let debugArray = [];
 let countUpdate = 0;
@@ -140,11 +139,13 @@ function jumpSpaceMan(event) {
 }
 
 function rocketSpaceMan(event) {
-    if (event.code == "ControlLeft") {
+    if (event.code == "ControlLeft" && fuelLevelCurrent < 0) {
         // rocket jump
         velocityY = -20;
-        fuelLevelCurrent = (fuelLevelCurrent + 10);
         keypress = 'ControlLeft'
+        console.log(fuelLevelCurrent);
+
+        fuelLevelCurrent = Math.min(0, fuelLevelCurrent + 10);
     }
 }
 

@@ -13,13 +13,13 @@ const fuelLevelY = 200;
 let fuelLevelCurrent = -100;
 
 //space man const properties
-const spaceManWidth = 35;
-const spaceManHeight = 40;
+const spaceManWidth = 60;
+const spaceManHeight = 127;
 const spaceManX = boardWidth / 10;
 const spaceManY = boardFloor - spaceManHeight;
 
 //lander properties
-const landerWidth = 100;
+const landerWidth = 50;
 const landerHeight = 60;
 const landerX = boardWidth; // first position of the lander when created
 const landerY = boardFloor - landerHeight;
@@ -54,7 +54,7 @@ let lander = {
 // physics
 let velocityX = -2; // jumping objects moving left speed
 let velocityY = 0; // spaceman jump speed
-let gravity = 1;
+let gravity = .3;
 
 
 // ON WINDOW LOAD
@@ -64,19 +64,25 @@ window.onload = function () {
     board.width = boardWidth;
     context = board.getContext("2d"); // used to draw on the canvas
     requestAnimationFrame(update);
-    setInterval(placeJumpObjects, 1500); // every 1.5 seconds call placeJumpObjects
+    setInterval(placeJumpObjects, 2500); // every 1.5 seconds call placeJumpObjects
     setInterval(manageJetPack, 1500); // add jet pack fuel every 500ms
     // setInterval(funDebugArray, 2000);
     document.addEventListener("keydown", jumpSpaceMan); // check for button press to move space man
     document.addEventListener("keydown", rocketSpaceMan);
+
+    //load images
+    spaceManImg = new Image();
+    spaceManImg.src = "./spaceman.png";
+    spaceManImg.onload = function () {
+        context.drawImage(spaceManImg, spaceMan.x, spaceMan.y, spaceMan.width, spaceMan.height);
+    }
+
 }
 
-
 // call animation frame to draw a rectangle to clear the previous frames
-function update() { // this created the function "update"
+function update() {
     requestAnimationFrame(update);
     context.clearRect(0, 0, board.width, board.height);
-    countUpdate = countUpdate + 1;
 
     // add gravity
     if (spaceMan.y < spaceManY) {
@@ -86,7 +92,8 @@ function update() { // this created the function "update"
     // set the new space man image on the update
     spaceMan.y = Math.max(0, spaceMan.y + velocityY); // stop space man from jumping over the board height
     spaceMan.y = Math.min(spaceManY, spaceMan.y); // stop space man from moving past the floor
-    context.fillRect(spaceMan.x, spaceMan.y, spaceMan.width, spaceMan.height);
+    // context.fillRect(spaceMan.x, spaceMan.y, spaceMan.width, spaceMan.height);   -- old remove this when image is working
+    context.drawImage(spaceManImg, spaceMan.x, spaceMan.y, spaceMan.width, spaceMan.height);
 
     // check if space man is on the floor to allow jumping
     if (spaceMan.y < (spaceManY - 10)) {
@@ -142,7 +149,7 @@ function jumpSpaceMan(event) {
 function rocketSpaceMan(event) {
     if (event.code == "ControlLeft" && fuelLevelCurrent < 0) {
         // rocket jump
-        velocityY = -20;
+        velocityY = -7;
         keypress = 'ControlLeft'
         console.log(fuelLevelCurrent);
 

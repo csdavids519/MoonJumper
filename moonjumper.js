@@ -67,6 +67,7 @@ window.onload = function () {
     context = board.getContext("2d"); // used to draw on the canvas
     requestAnimationFrame(update);
     setInterval(placeJumpObjects, 1500); // every 1.5 seconds call placeJumpObjects
+    setInterval(manageJetPack, 1500); // add jet pack fuel every 500ms
     // setInterval(funDebugArray, 2000);
     document.addEventListener("keydown", jumpSpaceMan); // check for button press to move space man
     document.addEventListener("keydown", rocketSpaceMan);
@@ -115,6 +116,18 @@ function update() { // this created the function "update"
     context.strokeRect(fuelLevelX, fuelLevelY, fuelLevelWidth, fuelLevelHeight);
     context.fillRect(fuelLevelX, fuelLevelY + fuelLevelHeight, fuelLevelWidth, fuelLevelCurrent);
 }
+
+// function to add fuel to jet pack
+function manageJetPack() {
+    if (fuelLevelCurrent <= 0 && fuelLevelCurrent > -100) {
+        fuelLevelCurrent = fuelLevelCurrent - 5;
+    }
+    console.log(fuelLevelCurrent);
+}
+
+
+
+
 
 // function to create new objects to jump
 function placeJumpObjects() {

@@ -92,7 +92,7 @@ function update() { // this created the function "update"
     }
 
     // set the new space man image on the update
-    spaceMan.y = spaceMan.y + velocityY;
+    spaceMan.y = Math.max(0, spaceMan.y + velocityY); // use math.min to stop space man from jumping over the board height
     context.fillRect(spaceMan.x, spaceMan.y, spaceMan.width, spaceMan.height);
 
     // check if space man is on the floor to allow jumping

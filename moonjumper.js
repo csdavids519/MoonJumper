@@ -5,6 +5,13 @@ let boardHeight = 500;
 let boardFloor = boardHeight - 20;
 let context;
 
+// fuel level indicator properties
+const fuelLevelWidth = 20;
+const fuelLevelHeight = 100;
+const fuelLevelX = 20;
+const fuelLevelY = 200;
+let fuelLevelCurrent = -100;
+
 //space man const properties
 const spaceManWidth = 35;
 const spaceManHeight = 40;
@@ -104,6 +111,10 @@ function update() { // this created the function "update"
         context.fillRect(jumpObject.x, lander.y, lander.width, lander.height);
     }
 
+
+    // draw jet pack fuel level
+    context.strokeRect(fuelLevelX, fuelLevelY, fuelLevelWidth, fuelLevelHeight);
+    context.fillRect(fuelLevelX, fuelLevelY + fuelLevelHeight, fuelLevelWidth, fuelLevelCurrent);
 }
 
 // function to create new objects to jump
@@ -115,7 +126,6 @@ function placeJumpObjects() {
         width: landerWidth,
         height: landerHeight
     }
-
     jumpObjectArray.push(landerJumpObject);
 }
 
@@ -133,10 +143,16 @@ function rocketSpaceMan(event) {
     if (event.code == "ControlLeft") {
         // rocket jump
         velocityY = -20;
+        fuelLevelCurrent = (fuelLevelCurrent + 10);
         keypress = 'ControlLeft'
     }
 }
 
+// function to manage the jet fuel usage of space man
+// function jetFuel() {
+//     let 
+
+// }
 
 // function funDebugArray() {
 //     let debugArrayObject = {

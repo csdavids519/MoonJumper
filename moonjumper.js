@@ -19,6 +19,12 @@ const landerY = boardFloor - landerHeight;
 
 let landerImage;
 
+
+
+// debug
+let debugArray = [];
+let countUpdate = 0;
+
 //jump objects array
 let jumpObjectArray = [];
 
@@ -55,9 +61,9 @@ window.onload = function () {
     context = board.getContext("2d"); // used to draw on the canvas
     requestAnimationFrame(update);
     setInterval(placeJumpObjects, 1500); // every 1.5 seconds call placeJumpObjects
-    setInterval(funDebugArray, 2000);
+    // setInterval(funDebugArray, 2000);
     document.addEventListener("keydown", jumpSpaceMan); // check for button press to move space man
-    // document.addEventListener("keydown", rocketSpaceMan);
+    document.addEventListener("keydown", rocketSpaceMan);
 }
 
 
@@ -82,6 +88,15 @@ function update() { // this created the function "update"
     spaceMan.y = spaceMan.y + velocityY;
     context.fillRect(spaceMan.x, spaceMan.y, spaceMan.width, spaceMan.height);
 
+    // check if space man is on the floor to allow jumping
+    if (spaceMan.y < (spaceManY - 10)) {
+        spaceMan.onFloor = false;
+    }
+
+    if (spaceMan.y > (spaceManY - 10)) {
+        spaceMan.onFloor = true;
+    }
+
     // move objects each frame
     for (let i = 0; i < jumpObjectArray.length; i++) {
         let jumpObject = jumpObjectArray[i]; // pass all object properties of array to jumpObject
@@ -89,10 +104,6 @@ function update() { // this created the function "update"
         context.fillRect(jumpObject.x, lander.y, lander.width, lander.height);
     }
 
-    // check if space man is on the floor to allow jumping
-    // if (spaceMan.y > (spaceManY + 10) || (spaceMan.y = spaceManY)) {
-    //     spaceMan.onFloor = true;
-    // }
 }
 
 // function to create new objects to jump
@@ -107,11 +118,11 @@ function placeJumpObjects() {
 
     jumpObjectArray.push(landerJumpObject);
 }
-// && spaceMan.onFloor
+
 let keypress; // log the key for debug
 // add key stroke controls
 function jumpSpaceMan(event) {
-    if (event.code == "Space") {
+    if (event.code == "Space" && spaceMan.onFloor) {
         //jump
         velocityY = -10;
         keypress = 'Space'
@@ -121,27 +132,24 @@ function jumpSpaceMan(event) {
 function rocketSpaceMan(event) {
     if (event.code == "ControlLeft") {
         // rocket jump
-        velocityY = -10;
+        velocityY = -20;
         keypress = 'ControlLeft'
     }
 }
 
 
-// debug
-let debugArray = [];
-let countUpdate = 0;
+// function funDebugArray() {
+//     let debugArrayObject = {
+//         x: spaceMan.x,
+//         y: spaceMan.y,
+//         veloY: velocityY,
+//         g: gravity,
+//         key: keypress,
+//         onFloor: spaceMan.onFloor,
+//         updatecnt: countUpdate
+//     }
 
-function funDebugArray() {
-    let debugArrayObject = {
-        x: spaceMan.x,
-        y: spaceMan.y,
-        veloY: velocityY,
-        g: gravity,
-        key: keypress,
-        onFloor: spaceMan.onFloor,
-        updatecnt: countUpdate
-    }
 
-    debugArray.push(debugArrayObject);
-    console.table(debugArray);
-}
+//     debugArray.push(debugArrayObject);
+//     console.table(debugArray);
+// }

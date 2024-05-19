@@ -26,14 +26,12 @@ const landerY = boardFloor - landerHeight;
 
 let landerImage;
 
-
 // debug
 let debugArray = [];
 let countUpdate = 0;
 
 //jump objects array
 let jumpObjectArray = [];
-
 
 // space man object
 let spaceMan = {
@@ -85,14 +83,9 @@ function update() { // this created the function "update"
         velocityY = velocityY + gravity;
     }
 
-    // stop space man from falling passed the floor
-    if (spaceMan.y > spaceManY) {
-        velocityY = 0;
-        spaceMan.y = spaceManY;
-    }
-
     // set the new space man image on the update
-    spaceMan.y = Math.max(0, spaceMan.y + velocityY); // use math.min to stop space man from jumping over the board height
+    spaceMan.y = Math.max(0, spaceMan.y + velocityY); // stop space man from jumping over the board height
+    spaceMan.y = Math.min(spaceManY, spaceMan.y); // stop space man from moving past the floor
     context.fillRect(spaceMan.x, spaceMan.y, spaceMan.width, spaceMan.height);
 
     // check if space man is on the floor to allow jumping
@@ -111,7 +104,6 @@ function update() { // this created the function "update"
         context.fillRect(jumpObject.x, lander.y, lander.width, lander.height);
     }
 
-
     // draw jet pack fuel level
     context.strokeRect(fuelLevelX, fuelLevelY, fuelLevelWidth, fuelLevelHeight);
     context.fillRect(fuelLevelX, fuelLevelY + fuelLevelHeight, fuelLevelWidth, fuelLevelCurrent);
@@ -124,10 +116,6 @@ function manageJetPack() {
     }
     console.log(fuelLevelCurrent);
 }
-
-
-
-
 
 // function to create new objects to jump
 function placeJumpObjects() {

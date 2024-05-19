@@ -5,7 +5,6 @@ let boardHeight = 500;
 let boardFloor = boardHeight - 20;
 let context;
 
-
 //space man const properties
 const spaceManWidth = 35;
 const spaceManHeight = 40;
@@ -20,7 +19,6 @@ const landerY = boardFloor - landerHeight;
 
 let landerImage;
 
-
 //jump objects array
 let jumpObjectArray = [];
 
@@ -30,7 +28,8 @@ let spaceMan = {
     x: spaceManX,
     y: spaceManY,
     width: spaceManWidth,
-    height: spaceManHeight
+    height: spaceManHeight,
+    onFloor: false
 }
 
 
@@ -48,7 +47,6 @@ let velocityY = 0; // spaceman jump speed
 let gravity = 1;
 
 
-
 // ON WINDOW LOAD
 window.onload = function () {
     board = document.getElementById("board");
@@ -59,8 +57,7 @@ window.onload = function () {
     setInterval(placeJumpObjects, 1500); // every 1.5 seconds call placeJumpObjects
     setInterval(funDebugArray, 2000);
     document.addEventListener("keydown", jumpSpaceMan); // check for button press to move space man
-    document.addEventListener("keydown", rocketSpaceMan);
-    // document.addEventListener("keyup", endRocketSpaceMan);
+    // document.addEventListener("keydown", rocketSpaceMan);
 }
 
 
@@ -68,36 +65,38 @@ window.onload = function () {
 function update() { // this created the function "update"
     requestAnimationFrame(update);
     context.clearRect(0, 0, board.width, board.height);
+    countUpdate = countUpdate + 1;
 
     // add gravity
     if (spaceMan.y < spaceManY) {
         velocityY = velocityY + gravity;
     }
 
+    // stop space man from falling passed the floor
     if (spaceMan.y > spaceManY) {
         velocityY = 0;
         spaceMan.y = spaceManY;
     }
 
-    // velocityY += gravity;
-    spaceMan.y += velocityY;
-    // context.fillRect(bird.x, bird.y, bird.width, bird.height); // after the canvas is clear, draw the fish bird again with
+    // set the new space man image on the update
+    spaceMan.y = spaceMan.y + velocityY;
     context.fillRect(spaceMan.x, spaceMan.y, spaceMan.width, spaceMan.height);
 
     // move objects each frame
-    // for (let i = 0; i < jumpObjectArray.length; i++) {
-    //     let jumpObject = jumpObjectArray[i]; // pass all object properties of array to jumpObject
-    //     jumpObject.x += velocityX;
-    //     context.fillRect(jumpObject.x, lander.y, lander.width, lander.height);
+    for (let i = 0; i < jumpObjectArray.length; i++) {
+        let jumpObject = jumpObjectArray[i]; // pass all object properties of array to jumpObject
+        jumpObject.x += velocityX;
+        context.fillRect(jumpObject.x, lander.y, lander.width, lander.height);
+    }
+
+    // check if space man is on the floor to allow jumping
+    // if (spaceMan.y > (spaceManY + 10) || (spaceMan.y = spaceManY)) {
+    //     spaceMan.onFloor = true;
     // }
 }
 
 // function to create new objects to jump
 function placeJumpObjects() {
-
-    // let randomPipeY = pipeY - pipeHeight/4 - Math.random()*(pipeHeight/2);
-    // let openingSpace = board.height/4;
-
     // create new object at starting position 
     let landerJumpObject = {
         x: landerX,
@@ -108,16 +107,15 @@ function placeJumpObjects() {
 
     jumpObjectArray.push(landerJumpObject);
 }
-
+// && spaceMan.onFloor
 let keypress; // log the key for debug
 // add key stroke controls
 function jumpSpaceMan(event) {
     if (event.code == "Space") {
         //jump
-        velocityY = -1;
+        velocityY = -10;
         keypress = 'Space'
     }
-
 }
 
 function rocketSpaceMan(event) {
@@ -129,14 +127,9 @@ function rocketSpaceMan(event) {
 }
 
 
-
-
-
-
-
-
 // debug
 let debugArray = [];
+let countUpdate = 0;
 
 function funDebugArray() {
     let debugArrayObject = {
@@ -144,9 +137,11 @@ function funDebugArray() {
         y: spaceMan.y,
         veloY: velocityY,
         g: gravity,
-        key: keypress
+        key: keypress,
+        onFloor: spaceMan.onFloor,
+        updatecnt: countUpdate
     }
 
     debugArray.push(debugArrayObject);
-    console.log(debugArray);
+    console.table(debugArray);
 }

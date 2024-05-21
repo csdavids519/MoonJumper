@@ -24,7 +24,7 @@ const landerHeight = 182;
 const landerX = boardWidth;
 const landerY = boardFloor - landerHeight;
 
-let landerImage;
+let landerImg;
 
 
 //rock small properties
@@ -110,8 +110,8 @@ window.onload = function () {
     rockLargeImg = new Image();
     rockLargeImg.src = "./rock_large.png";
 
-    landerImage = new Image();
-    landerImage.src = "./lander_small.png";
+    landerImg = new Image();
+    landerImg.src = "./lander_small.png";
 }
 
 
@@ -144,16 +144,30 @@ function update() {
 
     // move objects each frame
     for (let i = 0; i < jumpObjectArray.length; i++) {
-        let jumpObject = jumpObjectArray[i]; // pass all object properties of array to jumpObject
-        jumpObject.x += velocityX;
+        let jumpObjectCurrent = jumpObjectArray[i]; // pass all object properties of array to jumpObject
+        jumpObjectCurrent.x += velocityX;
+
         // context.fillRect(jumpObject.x, lander.y, lander.width, lander.height);
-        context.drawImage(rockSmallImg, jumpObject.x, lander.y, lander.width, lander.height);
+        if (jumpObjectCurrent.objectNumber == 0) {
+            //small rock
+            context.drawImage(rockSmallImg, jumpObjectCurrent.x, jumpObjectCurrent.y, jumpObjectCurrent.width, jumpObjectCurrent.height);
+        } else if (jumpObjectCurrent.objectNumber == 1) {
+            //large rock
+            context.drawImage(rockLargeImg, jumpObjectCurrent.x, jumpObjectCurrent.y, jumpObjectCurrent.width, jumpObjectCurrent.height);
+        } else if (jumpObjectCurrent.objectNumber == 2) {
+            //lander 
+            context.drawImage(landerImg, jumpObjectCurrent.x, jumpObjectCurrent.y, jumpObjectCurrent.width, jumpObjectCurrent.height);
+            // context.drawImage(rockSmallImg, jumpObject.x, lander.y, lander.width, lander.height);
+        }
     }
 
     // draw jet pack fuel level
     context.strokeRect(fuelLevelX, fuelLevelY, fuelLevelWidth, fuelLevelHeight);
     context.fillRect(fuelLevelX, fuelLevelY + fuelLevelHeight, fuelLevelWidth, fuelLevelCurrent);
+
+
 }
+
 
 // function to add fuel to jet pack
 function manageJetPack() {
@@ -249,4 +263,3 @@ function rocketSpaceMan(event) {
 
 //     debugArray.push(debugArrayObject);
 //     console.table(debugArray);
-// }

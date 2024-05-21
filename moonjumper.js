@@ -50,15 +50,8 @@ let rockLargeImg;
 let debugArray = [];
 let countUpdate = 0;
 
-//jump objects array
+// //jump objects array
 let jumpObjectArray = [];
-let jumpObject = {
-    objectNumber: 0,
-    x: 0,
-    y: 0,
-    width: 0,
-    height: 0
-}
 
 // space man object
 let spaceMan = {
@@ -143,6 +136,7 @@ function update() {
     }
 
     // move objects each frame
+    console.table(jumpObjectArray);
     for (let i = 0; i < jumpObjectArray.length; i++) {
         let jumpObjectCurrent = jumpObjectArray[i]; // pass all object properties of array to jumpObject
         jumpObjectCurrent.x += velocityX;
@@ -164,8 +158,6 @@ function update() {
     // draw jet pack fuel level
     context.strokeRect(fuelLevelX, fuelLevelY, fuelLevelWidth, fuelLevelHeight);
     context.fillRect(fuelLevelX, fuelLevelY + fuelLevelHeight, fuelLevelWidth, fuelLevelCurrent);
-
-
 }
 
 
@@ -183,6 +175,14 @@ function placeJumpObjects() {
     // pick jump object at random 0,1,2 possible
     function randomJumpObjects() {
         return Math.floor(Math.random() * 3);
+    }
+
+    let jumpObject = {
+        objectNumber: 0,
+        x: 0,
+        y: 0,
+        width: 0,
+        height: 0
     }
 
     jumpObjectNum = randomJumpObjects();
@@ -210,16 +210,7 @@ function placeJumpObjects() {
         jumpObject.width = landerWidth;
         jumpObject.height = landerHeight;
     }
-
-    // let landerJumpObject = {
-    //     objectNumber: jumpObjectNum,
-    //     x: landerX,
-    //     y: landerY,
-    //     width: landerWidth,
-    //     height: landerHeight
-    // }
     jumpObjectArray.push(jumpObject);
-    console.table(jumpObjectArray);
 }
 
 let keypress; // log the key for debug

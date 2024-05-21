@@ -4,5 +4,6 @@ body {
 }
 
 #board {
-    background-color: aqua;
+    /* background-color: skyblue; */
+    background-image: url("./vecteezy_moon_background.png");
 }

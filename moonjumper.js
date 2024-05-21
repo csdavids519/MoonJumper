@@ -9,7 +9,7 @@ let context;
 const fuelLevelWidth = 20;
 const fuelLevelHeight = 100;
 const fuelLevelX = 20;
-const fuelLevelY = 200;
+const fuelLevelY = 300;
 let fuelLevelCurrent = -100;
 
 //space man const properties
@@ -77,7 +77,12 @@ window.onload = function () {
         context.drawImage(spaceManImg, spaceMan.x, spaceMan.y, spaceMan.width, spaceMan.height);
     }
 
+    rockSmallImg = new Image();
+    rockSmallImg.src = "./rock_small.png";
 }
+
+
+
 
 // call animation frame to draw a rectangle to clear the previous frames
 function update() {
@@ -108,7 +113,8 @@ function update() {
     for (let i = 0; i < jumpObjectArray.length; i++) {
         let jumpObject = jumpObjectArray[i]; // pass all object properties of array to jumpObject
         jumpObject.x += velocityX;
-        context.fillRect(jumpObject.x, lander.y, lander.width, lander.height);
+        // context.fillRect(jumpObject.x, lander.y, lander.width, lander.height);
+        context.drawImage(rockSmallImg, jumpObject.x, lander.y, lander.width, lander.height);
     }
 
     // draw jet pack fuel level

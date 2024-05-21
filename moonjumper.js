@@ -19,12 +19,32 @@ const spaceManX = boardWidth / 10;
 const spaceManY = boardFloor - spaceManHeight;
 
 //lander properties
-const landerWidth = 50;
-const landerHeight = 60;
-const landerX = boardWidth; // first position of the lander when created
+const landerWidth = 208;
+const landerHeight = 182;
+const landerX = boardWidth;
 const landerY = boardFloor - landerHeight;
 
 let landerImage;
+
+
+//rock small properties
+const rockSmallWidth = 50;
+const rockSmallHeight = 60;
+const rockSmallX = boardWidth;
+const rockSmallY = boardFloor - rockSmallHeight;
+
+let rockSmallImg;
+
+
+//rock large properties
+const rockLargeWidth = 106;
+const rockLargeHeight = 100;
+const rockLargeX = boardWidth;
+const rockLargeY = boardFloor - rockLargeHeight;
+
+let rockLargeImg;
+
+
 
 // debug
 let debugArray = [];
@@ -32,6 +52,13 @@ let countUpdate = 0;
 
 //jump objects array
 let jumpObjectArray = [];
+let jumpObject = {
+    objectNumber: 0,
+    x: 0,
+    y: 0,
+    width: 0,
+    height: 0
+}
 
 // space man object
 let spaceMan = {
@@ -79,6 +106,12 @@ window.onload = function () {
 
     rockSmallImg = new Image();
     rockSmallImg.src = "./rock_small.png";
+
+    rockLargeImg = new Image();
+    rockLargeImg.src = "./rock_large.png";
+
+    landerImage = new Image();
+    landerImage.src = "./lander_small.png";
 }
 
 
@@ -127,19 +160,52 @@ function manageJetPack() {
     if (fuelLevelCurrent <= 0 && fuelLevelCurrent > -100) {
         fuelLevelCurrent = fuelLevelCurrent - 5;
     }
-    console.log(fuelLevelCurrent);
+    console.log("fuelLevel" + fuelLevelCurrent);
 }
 
 // function to create new objects to jump
 function placeJumpObjects() {
-    // create new object at starting position 
-    let landerJumpObject = {
-        x: landerX,
-        y: landerY,
-        width: landerWidth,
-        height: landerHeight
+    let jumpObjectNum;
+    // pick jump object at random 0,1,2 possible
+    function randomJumpObjects() {
+        return Math.floor(Math.random() * 3);
     }
-    jumpObjectArray.push(landerJumpObject);
+
+    jumpObjectNum = randomJumpObjects();
+
+    // create new object at starting position 
+    if (jumpObjectNum == 0) {
+        // small rock
+        jumpObject.objectNumber = jumpObjectNum;
+        jumpObject.x = rockSmallX;
+        jumpObject.y = rockSmallY;
+        jumpObject.width = rockSmallWidth;
+        jumpObject.height = rockSmallHeight;
+    } else if (jumpObjectNum == 1) {
+        // large rock
+        jumpObject.objectNumber = jumpObjectNum;
+        jumpObject.x = rockLargeX;
+        jumpObject.y = rockLargeY;
+        jumpObject.width = rockLargeWidth;
+        jumpObject.height = rockLargeHeight;
+    } else if (jumpObjectNum == 2) {
+        // lander small
+        jumpObject.objectNumber = jumpObjectNum;
+        jumpObject.x = landerX;
+        jumpObject.y = landerY;
+        jumpObject.width = landerWidth;
+        jumpObject.height = landerHeight;
+    }
+
+    // let landerJumpObject = {
+    //     objectNumber: jumpObjectNum,
+    //     x: landerX,
+    //     y: landerY,
+    //     width: landerWidth,
+    //     height: landerHeight
+    // }
+    jumpObjectArray.push(jumpObject);
+    console.table(jumpObjectArray);
 }
 
 let keypress; // log the key for debug

@@ -17,13 +17,13 @@ const spaceManWidth = 60;
 const spaceManHeight = 127;
 const spaceManX = boardWidth / 10;
 const spaceManY = boardFloor - spaceManHeight;
+let spaceManImg;
 
 //lander properties
 const landerWidth = 208;
 const landerHeight = 182;
 const landerX = boardWidth;
 const landerY = boardFloor - landerHeight;
-
 let landerImg;
 
 
@@ -32,7 +32,6 @@ const rockSmallWidth = 50;
 const rockSmallHeight = 60;
 const rockSmallX = boardWidth;
 const rockSmallY = boardFloor - rockSmallHeight;
-
 let rockSmallImg;
 
 
@@ -41,40 +40,25 @@ const rockLargeWidth = 106;
 const rockLargeHeight = 100;
 const rockLargeX = boardWidth;
 const rockLargeY = boardFloor - rockLargeHeight;
-
 let rockLargeImg;
 
-
-
-// debug
-let debugArray = [];
-let countUpdate = 0;
-
-// //jump objects array
+//jump objects array
 let jumpObjectArray = [];
 
-// space man object
+//space man object
 let spaceMan = {
     x: spaceManX,
     y: spaceManY,
     width: spaceManWidth,
     height: spaceManHeight,
     onFloor: false
-}
+};
 
-
-//object lander
-let lander = {
-    x: landerX,
-    y: landerY,
-    width: landerWidth,
-    height: landerHeight
-}
 
 // physics
 let velocityX = -2; // jumping objects moving left speed
 let velocityY = 0; // spaceman jump speed
-let gravity = .3;
+let gravity = 0.3;
 
 
 // ON WINDOW LOAD
@@ -95,7 +79,7 @@ window.onload = function () {
     spaceManImg.src = "./spaceman.png";
     spaceManImg.onload = function () {
         context.drawImage(spaceManImg, spaceMan.x, spaceMan.y, spaceMan.width, spaceMan.height);
-    }
+    };
 
     rockSmallImg = new Image();
     rockSmallImg.src = "./rock_small.png";
@@ -105,9 +89,7 @@ window.onload = function () {
 
     landerImg = new Image();
     landerImg.src = "./lander_small.png";
-}
-
-
+};
 
 
 // call animation frame to draw a rectangle to clear the previous frames
@@ -123,7 +105,6 @@ function update() {
     // set the new space man image on the update
     spaceMan.y = Math.max(0, spaceMan.y + velocityY); // stop space man from jumping over the board height
     spaceMan.y = Math.min(spaceManY, spaceMan.y); // stop space man from moving past the floor
-    // context.fillRect(spaceMan.x, spaceMan.y, spaceMan.width, spaceMan.height);   -- old remove this when image is working
     context.drawImage(spaceManImg, spaceMan.x, spaceMan.y, spaceMan.width, spaceMan.height);
 
     // check if space man is on the floor to allow jumping
@@ -136,12 +117,11 @@ function update() {
     }
 
     // move objects each frame
-    console.table(jumpObjectArray);
+    // console.table(jumpObjectArray);
     for (let i = 0; i < jumpObjectArray.length; i++) {
         let jumpObjectCurrent = jumpObjectArray[i]; // pass all object properties of array to jumpObject
         jumpObjectCurrent.x += velocityX;
 
-        // context.fillRect(jumpObject.x, lander.y, lander.width, lander.height);
         if (jumpObjectCurrent.objectNumber == 0) {
             //small rock
             context.drawImage(rockSmallImg, jumpObjectCurrent.x, jumpObjectCurrent.y, jumpObjectCurrent.width, jumpObjectCurrent.height);
@@ -151,9 +131,25 @@ function update() {
         } else if (jumpObjectCurrent.objectNumber == 2) {
             //lander 
             context.drawImage(landerImg, jumpObjectCurrent.x, jumpObjectCurrent.y, jumpObjectCurrent.width, jumpObjectCurrent.height);
-            // context.drawImage(rockSmallImg, jumpObject.x, lander.y, lander.width, lander.height);
         }
+
+        // code copy kennyYip
+        // if (!pipe.passed && bird.x > pipe.x + pipe.width) {
+        //     score += 0.5; //0.5 because there are 2 pipes! so 0.5*2 = 1, 1 for each set of pipes
+        //     pipe.passed = true;
+        // }
+
+        if (detectCollision(spaceMan, jumpObjectCurrent)) {
+            // gameOver = true;
+            console.log("collision!!")
+        }
+
     }
+
+
+
+
+
 
     // draw jet pack fuel level
     context.strokeRect(fuelLevelX, fuelLevelY, fuelLevelWidth, fuelLevelHeight);
@@ -166,7 +162,7 @@ function manageJetPack() {
     if (fuelLevelCurrent <= 0 && fuelLevelCurrent > -100) {
         fuelLevelCurrent = fuelLevelCurrent - 5;
     }
-    console.log("fuelLevel" + fuelLevelCurrent);
+    // console.log("fuelLevel" + fuelLevelCurrent);
 }
 
 // function to create new objects to jump
@@ -183,7 +179,7 @@ function placeJumpObjects() {
         y: 0,
         width: 0,
         height: 0
-    }
+    };
 
     jumpObjectNum = randomJumpObjects();
 
@@ -219,7 +215,7 @@ function jumpSpaceMan(event) {
     if (event.code == "Space" && spaceMan.onFloor) {
         //jump
         velocityY = -10;
-        keypress = 'Space'
+        keypress = 'Space';
     }
 }
 
@@ -227,30 +223,19 @@ function rocketSpaceMan(event) {
     if (event.code == "ControlLeft" && fuelLevelCurrent < 0) {
         // rocket jump
         velocityY = -7;
-        keypress = 'ControlLeft'
-        console.log(fuelLevelCurrent);
+        keypress = 'ControlLeft';
+        // console.log(fuelLevelCurrent);
 
         fuelLevelCurrent = Math.min(0, fuelLevelCurrent + 10);
     }
 }
 
-// function to manage the jet fuel usage of space man
-// function jetFuel() {
-//     let 
-
-// }
-
-// function funDebugArray() {
-//     let debugArrayObject = {
-//         x: spaceMan.x,
-//         y: spaceMan.y,
-//         veloY: velocityY,
-//         g: gravity,
-//         key: keypress,
-//         onFloor: spaceMan.onFloor,
-//         updatecnt: countUpdate
-//     }
-
-
-//     debugArray.push(debugArrayObject);
-//     console.table(debugArray);
+// code copy ImKennyYip
+function detectCollision(a, b) {
+    return a.x < b.x + b.width && //a's top left corner doesn't reach b's top right corner
+        a.x + a.width > b.x && //a's top right corner passes b's top left corner
+        a.y < b.y + b.height && //a's top left corner doesn't reach b's bottom left corner
+        a.y + a.height > b.y; //a's bottom left corner passes b's top left corner
+}
+// return a.x + a.width < b.x && // A x does not cross B x
+//         a.y + a.height < b.y && // A y is higher than B y

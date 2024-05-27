@@ -54,6 +54,8 @@ let spaceMan = {
     onFloor: false
 };
 
+let score = 0;
+
 
 // physics
 let velocityX = -2; // jumping objects moving left speed
@@ -125,19 +127,30 @@ function update() {
         if (jumpObjectCurrent.objectNumber == 0) {
             //small rock
             context.drawImage(rockSmallImg, jumpObjectCurrent.x, jumpObjectCurrent.y, jumpObjectCurrent.width, jumpObjectCurrent.height);
+            // calc score
+            if (!jumpObjectCurrent.passed && spaceMan.x > jumpObjectCurrent.x + jumpObjectCurrent.width) {
+                score += 1;
+                jumpObjectCurrent.passed = true;
+            }
+
         } else if (jumpObjectCurrent.objectNumber == 1) {
             //large rock
             context.drawImage(rockLargeImg, jumpObjectCurrent.x, jumpObjectCurrent.y, jumpObjectCurrent.width, jumpObjectCurrent.height);
+            // calc score
+            if (!jumpObjectCurrent.passed && spaceMan.x > jumpObjectCurrent.x + jumpObjectCurrent.width) {
+                score += 5;
+                jumpObjectCurrent.passed = true;
+            }
         } else if (jumpObjectCurrent.objectNumber == 2) {
             //lander 
             context.drawImage(landerImg, jumpObjectCurrent.x, jumpObjectCurrent.y, jumpObjectCurrent.width, jumpObjectCurrent.height);
+            // calc score
+            if (!jumpObjectCurrent.passed && spaceMan.x > jumpObjectCurrent.x + jumpObjectCurrent.width) {
+                score += 10;
+                jumpObjectCurrent.passed = true;
+            }
         }
-
-        // code copy kennyYip
-        // if (!pipe.passed && bird.x > pipe.x + pipe.width) {
-        //     score += 0.5; //0.5 because there are 2 pipes! so 0.5*2 = 1, 1 for each set of pipes
-        //     pipe.passed = true;
-        // }
+        console.log(score);
 
         if (detectCollision(spaceMan, jumpObjectCurrent)) {
             // gameOver = true;
@@ -145,11 +158,6 @@ function update() {
         }
 
     }
-
-
-
-
-
 
     // draw jet pack fuel level
     context.strokeRect(fuelLevelX, fuelLevelY, fuelLevelWidth, fuelLevelHeight);
@@ -178,7 +186,8 @@ function placeJumpObjects() {
         x: 0,
         y: 0,
         width: 0,
-        height: 0
+        height: 0,
+        passed: false
     };
 
     jumpObjectNum = randomJumpObjects();
@@ -237,5 +246,3 @@ function detectCollision(a, b) {
         a.y < b.y + b.height && //a's top left corner doesn't reach b's bottom left corner
         a.y + a.height > b.y; //a's bottom left corner passes b's top left corner
 }
-// return a.x + a.width < b.x && // A x does not cross B x
-//         a.y + a.height < b.y && // A y is higher than B y

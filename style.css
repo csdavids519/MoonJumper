@@ -6,4 +6,8 @@ body {
 #board {
     /* background-color: skyblue; */
     background-image: url("./vecteezy_moon_background.png");
+    background-repeat: no-repeat;
+    /* Do not repeat the image */
+    background-size: cover;
+    /* Resize the background image to cover the entire container */
 }

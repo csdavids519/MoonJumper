@@ -1,7 +1,7 @@
 //board
 let board;
-let boardWidth = 800;
-let boardHeight = 500;
+let boardWidth = 1800;
+let boardHeight = 1000;
 let boardFloor = boardHeight - 20;
 let context;
 
@@ -9,7 +9,7 @@ let context;
 const fuelLevelWidth = 20;
 const fuelLevelHeight = 100;
 const fuelLevelX = 20;
-const fuelLevelY = 300;
+const fuelLevelY = boardFloor - 100;
 let fuelLevelCurrent = -100;
 
 //space man const properties
@@ -26,14 +26,12 @@ const landerX = boardWidth;
 const landerY = boardFloor - landerHeight;
 let landerImg;
 
-
 //rock small properties
 const rockSmallWidth = 50;
 const rockSmallHeight = 60;
 const rockSmallX = boardWidth;
 const rockSmallY = boardFloor - rockSmallHeight;
 let rockSmallImg;
-
 
 //rock large properties
 const rockLargeWidth = 106;

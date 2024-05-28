@@ -41,7 +41,7 @@ const rockLargeY = boardFloor - rockLargeHeight;
 let rockLargeImg;
 
 //jump objects array
-let jumpObjectArray = [];
+let jumpObjectArray = [0];
 
 //space man object
 let spaceMan = {
@@ -68,7 +68,7 @@ window.onload = function () {
     board.width = boardWidth;
     context = board.getContext("2d"); // used to draw on the canvas
     requestAnimationFrame(update);
-    setInterval(placeJumpObjects, 2500); // every 1.5 seconds call placeJumpObjects
+    // setInterval(placeJumpObjects, 2500); // every 1.5 seconds call placeJumpObjects
     setInterval(manageJetPack, 1500); // add jet pack fuel every 500ms
     // setInterval(funDebugArray, 2000);
     document.addEventListener("keydown", jumpSpaceMan); // check for button press to move space man
@@ -148,7 +148,7 @@ function update() {
                 jumpObjectCurrent.passed = true;
             }
         }
-        console.log(score);
+        console.log("Score:", score);
 
         if (detectCollision(spaceMan, jumpObjectCurrent)) {
             // gameOver = true;
@@ -160,6 +160,9 @@ function update() {
     // draw jet pack fuel level
     context.strokeRect(fuelLevelX, fuelLevelY, fuelLevelWidth, fuelLevelHeight);
     context.fillRect(fuelLevelX, fuelLevelY + fuelLevelHeight, fuelLevelWidth, fuelLevelCurrent);
+
+    // call place new objects
+    placeJumpObjects();
 }
 
 
@@ -174,11 +177,8 @@ function manageJetPack() {
 // function to create new objects to jump
 function placeJumpObjects() {
     let jumpObjectNum;
-    // pick jump object at random 0,1,2 possible
-    function randomJumpObjects() {
-        return Math.floor(Math.random() * 3);
-    }
-
+    let jumpObjectGap;
+    let jumpObjectGapMin = boardWidth - 200;
     let jumpObject = {
         objectNumber: 0,
         x: 0,
@@ -188,41 +188,83 @@ function placeJumpObjects() {
         passed: false
     };
 
+    // pick jump object at random 0,1,2 possible
+    function randomJumpObjects() {
+        return Math.floor(Math.random() * 3);
+    }
+
+    // make object gap random 0 - 499 possible
+    function randomJumpGap() {
+        return Math.floor(Math.random() * 10000);
+    }
+    let jumprand = randomJumpGap()
+    jumpObjectGap = jumpObjectGapMin - jumprand;
     jumpObjectNum = randomJumpObjects();
 
-    // create new object at starting position 
-    if (jumpObjectNum == 0) {
-        // small rock
-        jumpObject.objectNumber = jumpObjectNum;
+    // console.log("X: ", jumpObjectArray[jumpObjectArray.length - 1].x);
+    // console.log("W: ", jumpObjectArray[jumpObjectArray.length - 1].width);
+    // console.log("gap: ", jumpObjectGap);
+
+    // check if array is empty
+    let firstJumpObject = false;
+    if (jumpObjectArray == 0) {
+        firstJumpObject = true;
+    }
+
+    // always load small rock to start jump array
+    if (firstJumpObject) {
+        jumpObject.objectNumber = 0;
         jumpObject.x = rockSmallX;
         jumpObject.y = rockSmallY;
         jumpObject.width = rockSmallWidth;
         jumpObject.height = rockSmallHeight;
-    } else if (jumpObjectNum == 1) {
-        // large rock
-        jumpObject.objectNumber = jumpObjectNum;
-        jumpObject.x = rockLargeX;
-        jumpObject.y = rockLargeY;
-        jumpObject.width = rockLargeWidth;
-        jumpObject.height = rockLargeHeight;
-    } else if (jumpObjectNum == 2) {
-        // lander small
-        jumpObject.objectNumber = jumpObjectNum;
-        jumpObject.x = landerX;
-        jumpObject.y = landerY;
-        jumpObject.width = landerWidth;
-        jumpObject.height = landerHeight;
+
+        jumpObjectArray.push(jumpObject);
+        console.table(jumpObjectArray);
     }
-    jumpObjectArray.push(jumpObject);
+
+    // console.log("poslastobject: ",(jumpObjectArray[jumpObjectArray.length - 1].x + jumpObjectArray[jumpObjectArray.length - 1].width));
+    // check last jump object has passed gap distance
+    console.log("ran:", (jumprand));
+    console.log("gap:", (jumpObjectGap));
+    console.log("lastarray:", (jumpObjectArray.length - 1));
+    console.log("lastarrayX:", (jumpObjectArray[jumpObjectArray.length - 1].x));
+    console.log("lastarrayW:", (jumpObjectArray[jumpObjectArray.length - 1].width));
+    console.log("lastarrayX+W:", (jumpObjectArray[jumpObjectArray.length - 1].x + jumpObjectArray[jumpObjectArray.length - 1].width));
+    if ((jumpObjectArray[jumpObjectArray.length - 1].x + jumpObjectArray[jumpObjectArray.length - 1].width) < jumpObjectGap) {
+        // create new object at starting position 
+        if (jumpObjectNum == 0) {
+            // small rock
+            jumpObject.objectNumber = jumpObjectNum;
+            jumpObject.x = rockSmallX;
+            jumpObject.y = rockSmallY;
+            jumpObject.width = rockSmallWidth;
+            jumpObject.height = rockSmallHeight;
+        } else if (jumpObjectNum == 1) {
+            // large rock
+            jumpObject.objectNumber = jumpObjectNum;
+            jumpObject.x = rockLargeX;
+            jumpObject.y = rockLargeY;
+            jumpObject.width = rockLargeWidth;
+            jumpObject.height = rockLargeHeight;
+        } else if (jumpObjectNum == 2) {
+            // lander small
+            jumpObject.objectNumber = jumpObjectNum;
+            jumpObject.x = landerX;
+            jumpObject.y = landerY;
+            jumpObject.width = landerWidth;
+            jumpObject.height = landerHeight;
+        }
+        jumpObjectArray.push(jumpObject);
+        console.table(jumpObjectArray);
+    }
 }
 
-let keypress; // log the key for debug
 // add key stroke controls
 function jumpSpaceMan(event) {
     if (event.code == "Space" && spaceMan.onFloor) {
         //jump
         velocityY = -10;
-        keypress = 'Space';
     }
 }
 

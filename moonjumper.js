@@ -53,7 +53,7 @@ let spaceMan = {
 };
 
 let score = 0;
-
+let scoreLast = 0;
 
 // physics
 let velocityX = -2; // jumping objects moving left speed
@@ -148,7 +148,6 @@ function update() {
                 jumpObjectCurrent.passed = true;
             }
         }
-        console.log("Score:", score);
 
         if (detectCollision(spaceMan, jumpObjectCurrent)) {
             // gameOver = true;
@@ -158,11 +157,38 @@ function update() {
     }
 
     // draw jet pack fuel level
+    if (fuelLevelCurrent >= -30) {
+        context.fillStyle = "yellow";
+    } else {
+        context.fillStyle = "green";
+    }
     context.strokeRect(fuelLevelX, fuelLevelY, fuelLevelWidth, fuelLevelHeight);
     context.fillRect(fuelLevelX, fuelLevelY + fuelLevelHeight, fuelLevelWidth, fuelLevelCurrent);
 
     // call place new objects
     placeJumpObjects();
+
+    // code copy
+    //clear jumpObjects
+    while (jumpObjectArray.length > 0 && jumpObjectArray[0].x < -jumpObjectArray[0].x) {
+        jumpObjectArray.shift(); //removes first element from the array
+    }
+
+    //code copy - edit
+    //score
+    if (scoreLast !== score && score > 0) {
+        scoreLast = score;
+        context.fillStyle = "LawnGreen";
+        context.font = "100px sans-serif";
+        context.fillText(("+ ", score), 50, 100);
+    } else {
+        context.fillStyle = "white";
+        context.font = "45px sans-serif";
+        context.fillText(score, 5, 45);
+    }
+    console.log("scorelast", scoreLast);
+    console.log("score", score);
+
 }
 
 

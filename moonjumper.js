@@ -68,9 +68,7 @@ window.onload = function () {
     board.width = boardWidth;
     context = board.getContext("2d"); // used to draw on the canvas
     requestAnimationFrame(update);
-    // setInterval(placeJumpObjects, 2500); // every 1.5 seconds call placeJumpObjects
     setInterval(manageJetPack, 1500); // add jet pack fuel every 500ms
-    // setInterval(funDebugArray, 2000);
     document.addEventListener("keydown", jumpSpaceMan); // check for button press to move space man
     document.addEventListener("keydown", rocketSpaceMan);
 
@@ -110,9 +108,7 @@ function update() {
     // check if space man is on the floor to allow jumping
     if (spaceMan.y < (spaceManY - 10)) {
         spaceMan.onFloor = false;
-    }
-
-    if (spaceMan.y > (spaceManY - 10)) {
+    } else if (spaceMan.y > (spaceManY - 10)) {
         spaceMan.onFloor = true;
     }
 
@@ -153,7 +149,6 @@ function update() {
             // gameOver = true;
             console.log("collision!!")
         }
-
     }
 
     // draw jet pack fuel level
@@ -181,6 +176,7 @@ function update() {
         context.fillStyle = "LawnGreen";
         context.font = "100px sans-serif";
         context.fillText(("+ ", score), 50, 100);
+
     } else {
         context.fillStyle = "white";
         context.font = "45px sans-serif";
@@ -188,8 +184,8 @@ function update() {
     }
     console.log("scorelast", scoreLast);
     console.log("score", score);
-
 }
+
 
 
 // function to add fuel to jet pack

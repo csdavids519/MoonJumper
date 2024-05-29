@@ -113,7 +113,6 @@ function update() {
     }
 
     // move objects each frame
-    // console.table(jumpObjectArray);
     for (let i = 0; i < jumpObjectArray.length; i++) {
         let jumpObjectCurrent = jumpObjectArray[i]; // pass all object properties of array to jumpObject
         jumpObjectCurrent.x += velocityX;
@@ -182,8 +181,6 @@ function update() {
         context.font = "45px sans-serif";
         context.fillText(score, 5, 45);
     }
-    console.log("scorelast", scoreLast);
-    console.log("score", score);
 }
 
 
@@ -193,39 +190,54 @@ function manageJetPack() {
     if (fuelLevelCurrent <= 0 && fuelLevelCurrent > -100) {
         fuelLevelCurrent = fuelLevelCurrent - 5;
     }
-    // console.log("fuelLevel" + fuelLevelCurrent);
 }
 
 // function to create new objects to jump
 function placeJumpObjects() {
+    let jumpGapFactorScore;
     let jumpObjectNum;
     let jumpObjectGap;
-    let jumpObjectGapMin = boardWidth - 200;
+    let jumpObjectGapMin = boardWidth - 100;
     let jumpObject = {
         objectNumber: 0,
         x: 0,
         y: 0,
         width: 0,
         height: 0,
-        passed: false
+        passed: false,
+        debugJumpGap: 0,            //DEBUG -REMOVE
+        debugJumpRan: 0,
+        debugJumpGapFactor: 0
     };
+
+    // modify jump gap based on player score 
+    //value of boardWidth/1 = very easy, value of boardWidth/1000 = very hard
+    if (score < 10) {
+        jumpGapFactorScore = boardWidth/5;
+    } else if (score < 100) {
+        jumpGapFactorScore = boardWidth/10;
+    } else if (score < 200) {
+        jumpGapFactorScore = boardWidth/50;
+    } else if (score < 500) {
+        jumpGapFactorScore = boardWidth/100;
+    } else if (score < 5000) {
+        jumpGapFactorScore = boardWidth/500;
+    }
 
     // pick jump object at random 0,1,2 possible
     function randomJumpObjects() {
         return Math.floor(Math.random() * 3);
     }
 
-    // make object gap random 0 - 499 possible
+    // make object gap random
     function randomJumpGap() {
-        return Math.floor(Math.random() * 10000);
+        return Math.floor(Math.random() * boardWidth/2) + jumpGapFactorScore;
     }
+
     let jumprand = randomJumpGap()
     jumpObjectGap = jumpObjectGapMin - jumprand;
     jumpObjectNum = randomJumpObjects();
 
-    // console.log("X: ", jumpObjectArray[jumpObjectArray.length - 1].x);
-    // console.log("W: ", jumpObjectArray[jumpObjectArray.length - 1].width);
-    // console.log("gap: ", jumpObjectGap);
 
     // check if array is empty
     let firstJumpObject = false;
@@ -245,14 +257,7 @@ function placeJumpObjects() {
         console.table(jumpObjectArray);
     }
 
-    // console.log("poslastobject: ",(jumpObjectArray[jumpObjectArray.length - 1].x + jumpObjectArray[jumpObjectArray.length - 1].width));
     // check last jump object has passed gap distance
-    console.log("ran:", (jumprand));
-    console.log("gap:", (jumpObjectGap));
-    console.log("lastarray:", (jumpObjectArray.length - 1));
-    console.log("lastarrayX:", (jumpObjectArray[jumpObjectArray.length - 1].x));
-    console.log("lastarrayW:", (jumpObjectArray[jumpObjectArray.length - 1].width));
-    console.log("lastarrayX+W:", (jumpObjectArray[jumpObjectArray.length - 1].x + jumpObjectArray[jumpObjectArray.length - 1].width));
     if ((jumpObjectArray[jumpObjectArray.length - 1].x + jumpObjectArray[jumpObjectArray.length - 1].width) < jumpObjectGap) {
         // create new object at starting position 
         if (jumpObjectNum == 0) {
@@ -277,6 +282,10 @@ function placeJumpObjects() {
             jumpObject.width = landerWidth;
             jumpObject.height = landerHeight;
         }
+        jumpObject.debugJumpGap = jumpObjectGap;
+        jumpObject.debugJumpRan = jumprand;
+        jumpObject.debugJumpGapFactor = jumpGapFactorScore;
+        
         jumpObjectArray.push(jumpObject);
         console.table(jumpObjectArray);
     }
@@ -295,7 +304,6 @@ function rocketSpaceMan(event) {
         // rocket jump
         velocityY = -7;
         keypress = 'ControlLeft';
-        // console.log(fuelLevelCurrent);
 
         fuelLevelCurrent = Math.min(0, fuelLevelCurrent + 10);
     }

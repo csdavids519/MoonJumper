@@ -205,7 +205,7 @@ function placeJumpObjects() {
         width: 0,
         height: 0,
         passed: false,
-        debugJumpGap: 0,            //DEBUG -REMOVE
+        debugJumpGap: 0, //DEBUG -REMOVE
         debugJumpRan: 0,
         debugJumpGapFactor: 0
     };
@@ -213,16 +213,19 @@ function placeJumpObjects() {
     // modify jump gap based on player score 
     //value of boardWidth/1 = very easy, value of boardWidth/1000 = very hard
     if (score < 10) {
-        jumpGapFactorScore = boardWidth/5;
+        jumpGapFactorScore = boardWidth / 5;
     } else if (score < 100) {
-        jumpGapFactorScore = boardWidth/10;
+        jumpGapFactorScore = boardWidth / 10;
     } else if (score < 200) {
-        jumpGapFactorScore = boardWidth/50;
+        jumpGapFactorScore = boardWidth / 50;
     } else if (score < 500) {
-        jumpGapFactorScore = boardWidth/100;
+        jumpGapFactorScore = boardWidth / 100;
     } else if (score < 5000) {
-        jumpGapFactorScore = boardWidth/500;
+        jumpGapFactorScore = boardWidth / 500;
     }
+
+    // test git push and fetch
+
 
     // pick jump object at random 0,1,2 possible
     function randomJumpObjects() {
@@ -231,7 +234,7 @@ function placeJumpObjects() {
 
     // make object gap random
     function randomJumpGap() {
-        return Math.floor(Math.random() * boardWidth/2) + jumpGapFactorScore;
+        return Math.floor(Math.random() * boardWidth / 2) + jumpGapFactorScore;
     }
 
     let jumprand = randomJumpGap()
@@ -285,7 +288,7 @@ function placeJumpObjects() {
         jumpObject.debugJumpGap = jumpObjectGap;
         jumpObject.debugJumpRan = jumprand;
         jumpObject.debugJumpGapFactor = jumpGapFactorScore;
-        
+
         jumpObjectArray.push(jumpObject);
         console.table(jumpObjectArray);
     }

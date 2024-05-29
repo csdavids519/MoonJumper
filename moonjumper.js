@@ -1,7 +1,7 @@
 //board
 let board;
-let boardWidth = 1800;
-let boardHeight = 800;
+let boardWidth = window.innerWidth * 0.8;
+let boardHeight = window.innerHeight * 0.8;
 let boardFloor = boardHeight - 20;
 let context;
 

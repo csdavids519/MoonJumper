@@ -1,7 +1,7 @@
 //board
 let board;
 let boardWidth = 1800;
-let boardHeight = 1000;
+let boardHeight = 800;
 let boardFloor = boardHeight - 20;
 let context;
 
@@ -74,19 +74,19 @@ window.onload = function () {
 
     //load images
     spaceManImg = new Image();
-    spaceManImg.src = "./spaceman.png";
+    spaceManImg.src = "./assets/images/spaceman.png";
     spaceManImg.onload = function () {
         context.drawImage(spaceManImg, spaceMan.x, spaceMan.y, spaceMan.width, spaceMan.height);
     };
 
     rockSmallImg = new Image();
-    rockSmallImg.src = "./rock_small.png";
+    rockSmallImg.src = "./assets/images/rock_small.png";
 
     rockLargeImg = new Image();
-    rockLargeImg.src = "./rock_large.png";
+    rockLargeImg.src = "./assets/images/rock_large.png";
 
     landerImg = new Image();
-    landerImg.src = "./lander_small.png";
+    landerImg.src = "./assets/images/lander_small.png";
 };
 
 

@@ -60,8 +60,9 @@ let velocityX = -2; // jumping objects moving left speed
 let velocityY = 0; // spaceman jump speed
 let gravity = 0.3;
 
-
-// ON WINDOW LOAD
+/****************
+ * ON WINDOW LOAD
+ ****************/
 window.onload = function () {
     board = document.getElementById("board");
     board.height = boardHeight;
@@ -89,7 +90,9 @@ window.onload = function () {
     landerImg.src = "./assets/images/lander_small.png";
 };
 
-
+/************************
+ * * UPDATE SCREEN 
+ ************************/
 // call animation frame to draw a rectangle to clear the previous frames
 function update() {
     requestAnimationFrame(update);
@@ -183,8 +186,6 @@ function update() {
     }
 }
 
-
-
 // function to add fuel to jet pack
 function manageJetPack() {
     if (fuelLevelCurrent <= 0 && fuelLevelCurrent > -100) {
@@ -192,6 +193,9 @@ function manageJetPack() {
     }
 }
 
+/*************************
+ * PLACE NEW JUMP OBJECTS
+ *************************/
 // function to create new objects to jump
 function placeJumpObjects() {
     let jumpGapFactorScore;
@@ -220,10 +224,10 @@ function placeJumpObjects() {
         jumpGapFactorScore = boardWidth / 50;
     } else if (score < 500) {
         jumpGapFactorScore = boardWidth / 100;
-    } else if (score < 5000) {
+    } else if (score > 5000) {
         jumpGapFactorScore = boardWidth / 500;
     }
-    
+
     // pick jump object at random 0,1,2 possible
     function randomJumpObjects() {
         return Math.floor(Math.random() * 3);
@@ -291,6 +295,9 @@ function placeJumpObjects() {
     }
 }
 
+/************************
+ * MANAGE KEY PRESS EVENT
+ *************************/
 // add key stroke controls
 function jumpSpaceMan(event) {
     if (event.code == "Space" && spaceMan.onFloor) {
@@ -309,6 +316,9 @@ function rocketSpaceMan(event) {
     }
 }
 
+/************************
+ * MANAGE OBJECT COLLISION
+ *************************/
 // code copy ImKennyYip
 function detectCollision(a, b) {
     return a.x < b.x + b.width && //a's top left corner doesn't reach b's top right corner

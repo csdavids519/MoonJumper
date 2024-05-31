@@ -1,3 +1,10 @@
+/*  wildcard selector to override default styles adds by the browser  */
+/* * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+} */
+
 body {
     font-family: 'Courier New', Courier, monospace;
     text-align: center;
@@ -23,8 +30,10 @@ body {
     max-height: 80%;
 }
 
+.splash_overview,
 .splash_welcome,
 .splash_howtoplay {
+    position: relative;
     width: 100%;
     top: 30%;
     max-width: 800px;
@@ -33,13 +42,9 @@ body {
     margin: 50px 0px;
     border-radius: 10px;
     display: none;
+    overflow: hidden;
+    object-fit: contain;
 }
-
-/* .splash_howtoplay {
-    display: none;
-} */
-
-
 
 .splash_howtoplay h1,
 .splash_welcome h1 {
@@ -52,12 +57,56 @@ body {
     color: coral;
 }
 
+.splash_overview p,
 .splash_howtoplay p,
 .splash_welcome p {
     padding: 5px 25px;
     font-size: 20px;
     top: 500px;
     color: white;
+}
+
+.previewImg {
+    max-width: 750px;
+    height: auto;
+    padding: 20px;
+}
+
+/* game controls info boxes */
+.info_box {
+    position: absolute;
+    text-align: center;
+    align-content: center;
+    background-color: coral;
+    width: 30px;
+    height: 30px;
+    border: 3px solid black;
+    border-radius: 50px;
+}
+
+.info_box_1 {
+    bottom: 140px;
+    left: 35px;
+}
+
+.info_box_2 {
+    bottom: 20px;
+    left: 230px;
+}
+
+.info_box_3 {
+    bottom: 150px;
+    left: 230px;
+}
+
+.info_box_4 {
+    bottom: 50px;
+    left: 360px;
+}
+
+.info_box_5 {
+    top: 90px;
+    left: 25px;
 }
 
 .buttons {
@@ -76,6 +125,7 @@ body {
     cursor: pointer;
 }
 
+.gamePreviewButton,
 .howToButton,
 .backButton {
     width: 200px;
@@ -86,7 +136,7 @@ body {
     display: none;
 }
 
-
+.gamePreviewButton a,
 .startgamebutton a,
 #howToButton a {
     color: black;
@@ -98,9 +148,7 @@ body {
     background-color: skyblue;
     background-image: url("../../assets/images/vecteezy_moon_background.png");
     background-repeat: no-repeat;
-    /* Do not repeat the image */
     background-size: cover;
-    /* Resize the background image to cover the entire container */
 }
 
 .active {

@@ -223,10 +223,7 @@ function placeJumpObjects() {
     } else if (score < 5000) {
         jumpGapFactorScore = boardWidth / 500;
     }
-
-    // test git push and fetch
-
-
+    
     // pick jump object at random 0,1,2 possible
     function randomJumpObjects() {
         return Math.floor(Math.random() * 3);

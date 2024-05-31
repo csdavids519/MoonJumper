@@ -5,29 +5,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MoonJumper</title>
-    <link rel="stylesheet" href="assets/css/style.css">
-
     <link rel="icon" href="assets/favicon/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
     <link rel="manifest" href="assets/favicon//site.webmanifest">
-
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/scripts/indexpage.js" defer></script>
 </head>
 
 <body class="startbg">
-    <div class="splash">
+    <div class="splash_welcome active">
         <h1>Moon Jumper</h1>
         <h2>Welcome to Moon Jumper!</h2>
         <p>Jump over the objects to survive on the moon. </p>
         <p>Use your jet pack to help but be warned, it has limited fuel
             and needs some time to recharge.</p>
     </div>
-    
-    <div class="howtotext">
+
+    <div class="splash_howtoplay">
         <h1>Moon Jumper</h1>
         <p>Jump over the objects to stay alive.</p>
         <p>Use Space bar to jump from the moon surface</p>
         <p>Use Left Ctrl to use your jetpack, keep an eye on your fuel level, it needs some time to recharge</p>
-        <p>Larger objects will increase your score faster but stay attentive, as your score increases jump objects will come faster</p>
+        <p>Larger objects will increase your score faster but stay attentive, as your score increases jump objects will
+            come faster</p>
     </div>
 
     <div class="buttons">
@@ -36,9 +36,12 @@
                 <p>Start Moon Jumper</p>
             </a>
         </div>
-        <div class="howtoplaybutton">
-            <a href="howto.html" aria-label="jump to the game instructions">
-                <p>How To Play</p>
+        <div id="howToButton" class="howToButton active">
+            <p>How To Play</p>
+            </a>
+        </div>
+        <div id="backButton" class="backButton">
+            <p>Back</p>
             </a>
         </div>
     </div>

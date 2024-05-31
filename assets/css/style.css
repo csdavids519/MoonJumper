@@ -8,6 +8,7 @@
 body {
     font-family: 'Courier New', Courier, monospace;
     text-align: center;
+    background-color: darkgray;
 }
 
 .startbg {
@@ -82,6 +83,7 @@ body {
     height: 30px;
     border: 3px solid black;
     border-radius: 50px;
+    cursor: pointer;
 }
 
 .info_box_1 {
@@ -139,6 +141,14 @@ body {
     text-transform: uppercase;
 }
 
+.buttons_game_board {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    text-transform: uppercase;
+}
+
+.homebutton,
 .startgamebutton {
     width: 200px;
     background-color: coral;
@@ -158,6 +168,7 @@ body {
     display: none;
 }
 
+.homebutton a,
 .gamePreviewButton a,
 .startgamebutton a,
 #howToButton a {

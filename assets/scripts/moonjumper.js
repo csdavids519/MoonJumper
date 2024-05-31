@@ -57,7 +57,7 @@ let scoreLast = 0;
 
 // physics
 let velocityX = -2; // jumping objects moving left speed
-let velocityY = 0; // spaceman jump speed
+let velocityY = 0; // spaceman jump speed - written by keypress event
 let gravity = 0.3;
 
 /****************
@@ -216,16 +216,26 @@ function placeJumpObjects() {
 
     // modify jump gap based on player score 
     //value of boardWidth/1 = very easy, value of boardWidth/1000 = very hard
+    context.fillStyle = "white";
+    context.font = "45px sans-serif";
     if (score < 10) {
+        context.fillText("Level 1", boardWidth / 2, 45);
         jumpGapFactorScore = boardWidth / 5;
     } else if (score < 100) {
+        context.fillText("Level 2", boardWidth / 2, 45);
         jumpGapFactorScore = boardWidth / 10;
     } else if (score < 200) {
+        context.fillText("Level 3", boardWidth / 2, 45);
         jumpGapFactorScore = boardWidth / 50;
     } else if (score < 500) {
+        context.fillText("Level 4", boardWidth / 2, 45);
         jumpGapFactorScore = boardWidth / 100;
-    } else if (score > 5000) {
+    } else if (score < 1000) {
+        context.fillText("Level 5", boardWidth / 2, 45);
         jumpGapFactorScore = boardWidth / 500;
+    } else {
+        context.fillText("Level 6", boardWidth / 2, 45);
+        jumpGapFactorScore = boardWidth / 1000;
     }
 
     // pick jump object at random 0,1,2 possible

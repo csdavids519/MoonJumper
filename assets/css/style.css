@@ -150,7 +150,7 @@ body {
 
 .homebutton,
 .startgamebutton {
-    width: 200px;
+    width: 150px;
     background-color: coral;
     border-radius: 10px;
     border: 2px solid #000000;
@@ -160,8 +160,7 @@ body {
 .gamePreviewButton,
 .howToButton,
 .backButton {
-    min-width: 100px;
-    max-width: 200px;
+    width: 150px;
     background-color: coral;
     border-radius: 10px;
     border: 2px solid #000000;
@@ -195,8 +194,7 @@ body {
 @media screen and (max-width: 768px) {
     .mobile_visible {
         display: block;
-
-
+        -webkit-tap-highlight-color: transparent;
     }
 
     .mobile_hidden {
@@ -208,8 +206,6 @@ body {
 @media screen and (min-width: 768px) {
     .mobile_visible {
         display: none;
-
-
     }
 
     .mobile_hidden {

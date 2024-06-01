@@ -323,16 +323,8 @@ function jumpSpaceMan(event) {
     console.log("eventspace: ", event);
 }
 
-// function jumpWClick(event) {
-//     if (event.type == "click") {
-//         velocityY = -10;
-//     }
-//     console.log("eventclick: ", event);
-
-// }
-
 function jetPackSpaceMan(event) {
-    if (event.code == "ControlLeft" && fuelLevelCurrent < 0) {
+    if ((event.code == "ControlLeft" || event.type == "click") && fuelLevelCurrent < 0) {
         // rocket jump
         velocityY = -7;
         keypress = 'ControlLeft';

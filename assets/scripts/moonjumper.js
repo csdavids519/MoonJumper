@@ -26,6 +26,7 @@ const landerWidth = 208;
 const landerHeight = 182;
 const landerX = boardWidth;
 const landerY = boardFloor - landerHeight;
+const landerCollisionBuffer = 10;
 let landerImg;
 
 //rock small properties
@@ -33,6 +34,7 @@ const rockSmallWidth = 50;
 const rockSmallHeight = 60;
 const rockSmallX = boardWidth;
 const rockSmallY = boardFloor - rockSmallHeight;
+const rockSmallCollisionBuffer = 10;
 let rockSmallImg;
 
 //rock large properties
@@ -40,6 +42,7 @@ const rockLargeWidth = 106;
 const rockLargeHeight = 100;
 const rockLargeX = boardWidth;
 const rockLargeY = boardFloor - rockLargeHeight;
+const rockLargeCollisionBuffer = 10;
 let rockLargeImg;
 
 //jump objects array
@@ -232,6 +235,7 @@ function placeJumpObjects() {
     let jumpObjectGapMin = boardWidth - 100;
     let jumpObject = {
         objectNumber: 0,
+        collisionBuffer: 0,
         x: 0,
         y: 0,
         width: 0,
@@ -286,6 +290,7 @@ function placeJumpObjects() {
     // always load small rock to start jump array
     if (firstJumpObject) {
         jumpObject.objectNumber = 0;
+        jumpObject.collisionBuffer = rockSmallCollisionBuffer;
         jumpObject.x = rockSmallX;
         jumpObject.y = rockSmallY;
         jumpObject.width = rockSmallWidth;
@@ -295,12 +300,16 @@ function placeJumpObjects() {
         console.table(jumpObjectArray);
     }
 
+    /**********************************
+     * LOAD NEW JUMP OBJECT TO ARRAY
+     **********************************/
     // check last jump object has passed gap distance
     if ((jumpObjectArray[jumpObjectArray.length - 1].x + jumpObjectArray[jumpObjectArray.length - 1].width) < jumpObjectGap) {
         // create new object at starting position 
         if (jumpObjectNum == 0) {
             // small rock
             jumpObject.objectNumber = jumpObjectNum;
+            jumpObject.collisionBuffer = rockSmallCollisionBuffer;
             jumpObject.x = rockSmallX;
             jumpObject.y = rockSmallY;
             jumpObject.width = rockSmallWidth;
@@ -308,6 +317,7 @@ function placeJumpObjects() {
         } else if (jumpObjectNum == 1) {
             // large rock
             jumpObject.objectNumber = jumpObjectNum;
+            jumpObject.collisionBuffer = rockLargeCollisionBuffer;
             jumpObject.x = rockLargeX;
             jumpObject.y = rockLargeY;
             jumpObject.width = rockLargeWidth;
@@ -315,6 +325,7 @@ function placeJumpObjects() {
         } else if (jumpObjectNum == 2) {
             // lander small
             jumpObject.objectNumber = jumpObjectNum;
+            jumpObject.collisionBuffer = landerCollisionBuffer;
             jumpObject.x = landerX;
             jumpObject.y = landerY;
             jumpObject.width = landerWidth;
@@ -360,8 +371,17 @@ function jetPackSpaceMan(event) {
  *************************/
 // code copy ImKennyYip
 function detectCollision(a, b) {
-    return a.x < b.x + b.width && //a's top left corner doesn't reach b's top right corner
-        a.x + a.width > b.x && //a's top right corner passes b's top left corner
-        a.y < b.y + b.height && //a's top left corner doesn't reach b's bottom left corner
-        a.y + a.height > b.y; //a's bottom left corner passes b's top left corner
+    let c = (b.x + b.collisionBuffer); // c is b.x with collision buffer amount added 
+    let d = (b.y + b.collisionBuffer); // d is b.y with collision buffer amount added
+    let e = ((b.x + b.width) - b.collisionBuffer); // e is b.width less collision buttfer amount
+    // console.log(c, d, b.x, b.y, b.collisionBuffer);
+    return a.x < e && //a's top left corner doesn't reach b's top right corner
+        a.x + a.width > c && //a's top right corner passes b's top left corner
+        a.y < d + b.height && //a's top left corner doesn't reach b's bottom left corner
+        a.y + a.height > d; //a's bottom left corner passes b's top left corner
 }
+
+// a.x < b.x + b.width && //a's top left corner doesn't reach b's top right corner
+//         a.x + a.width > b.x && //a's top right corner passes b's top left corner
+//         a.y < b.y + b.height && //a's top left corner doesn't reach b's bottom left corner
+//         a.y + a.height > b.y; //a's bottom left corner passes b's top left corner

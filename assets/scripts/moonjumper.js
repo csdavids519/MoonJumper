@@ -173,7 +173,7 @@ function update() {
 
     // code copy
     //clear jumpObjects
-    while (jumpObjectArray.length > 0 && jumpObjectArray[0].x < -jumpObjectArray[0].x) {
+    while (jumpObjectArray.length > 0 && (jumpObjectArray[1].x < 0)) {
         jumpObjectArray.shift(); //removes first element from the array
     }
 

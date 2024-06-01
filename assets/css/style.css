@@ -160,7 +160,8 @@ body {
 .gamePreviewButton,
 .howToButton,
 .backButton {
-    width: 200px;
+    min-width: 100px;
+    max-width: 200px;
     background-color: coral;
     border-radius: 10px;
     border: 2px solid #000000;
@@ -186,4 +187,32 @@ body {
 
 .active {
     display: block;
+}
+
+
+/*----------------------- Media query -----------------------  */
+/* ---------- Media query: tablets and smaller (768px and less) ----------*/
+@media screen and (max-width: 768px) {
+    .mobile_visible {
+        display: block;
+
+
+    }
+
+    .mobile_hidden {
+        display: none;
+    }
+}
+
+/* ---------- Media query: tablets and larger (768px and up) ----------*/
+@media screen and (min-width: 768px) {
+    .mobile_visible {
+        display: none;
+
+
+    }
+
+    .mobile_hidden {
+        display: block;
+    }
 }

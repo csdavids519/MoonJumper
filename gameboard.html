@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MoonJumper</title>
     <link rel="stylesheet" href="assets/css/style.css">
-    <script src="assets/scripts/moonjumper.js"></script>
+    <script src="assets/scripts/moonjumper.js" defer></script>
 
 
 </head>
@@ -16,9 +16,17 @@
     <canvas id="board"></canvas>
 
     <div class="buttons_game_board">
-        <div class="homebutton">
+        <div class="homebutton mobile_hidden">
             <a href="index.html" aria-label="jump to home page">
                 <p>Back to Start</p>
+            </a>
+        </div>
+        <div class="homebutton mobile_visible" id="mobileJumpButton">
+            <p>Jump</p>
+            </a>
+        </div>
+        <div class="homebutton mobile_visible" id="mobileJetPackButton">
+            <p>Jet Pack</p>
             </a>
         </div>
     </div>

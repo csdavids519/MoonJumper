@@ -4,6 +4,8 @@ let boardWidth = window.innerWidth * 0.8;
 let boardHeight = window.innerHeight * 0.8;
 let boardFloor = boardHeight - 20;
 let context;
+let mobileJumpButton;
+let mobileJetPackButton;
 
 // fuel level indicator properties
 const fuelLevelWidth = 20;
@@ -65,13 +67,17 @@ let gravity = 0.3;
  ****************/
 window.onload = function () {
     board = document.getElementById("board");
+    mobileJumpButton = document.getElementById("mobileJumpButton");
+    mobileJetPackButton = document.getElementById("mobileJetPackButton");
     board.height = boardHeight;
     board.width = boardWidth;
     context = board.getContext("2d"); // used to draw on the canvas
     requestAnimationFrame(update);
     setInterval(manageJetPack, 1500); // add jet pack fuel every 500ms
     document.addEventListener("keydown", jumpSpaceMan); // check for button press to move space man
-    document.addEventListener("keydown", rocketSpaceMan);
+    document.addEventListener("keydown", jetPackSpaceMan);
+    mobileJumpButton.addEventListener("click", jumpSpaceMan);
+    mobileJetPackButton.addEventListener("click", jetPackSpaceMan);
 
     //load images
     spaceManImg = new Image();
@@ -310,13 +316,22 @@ function placeJumpObjects() {
  *************************/
 // add key stroke controls
 function jumpSpaceMan(event) {
-    if (event.code == "Space" && spaceMan.onFloor) {
+    if ((event.code == "Space" || event.type == "click") && spaceMan.onFloor) {
         //jump
         velocityY = -10;
     }
+    console.log("eventspace: ", event);
 }
 
-function rocketSpaceMan(event) {
+// function jumpWClick(event) {
+//     if (event.type == "click") {
+//         velocityY = -10;
+//     }
+//     console.log("eventclick: ", event);
+
+// }
+
+function jetPackSpaceMan(event) {
     if (event.code == "ControlLeft" && fuelLevelCurrent < 0) {
         // rocket jump
         velocityY = -7;

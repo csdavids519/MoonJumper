@@ -130,7 +130,14 @@ body {
     font-weight: bold;
     width: 100px;
     height: 50px;
+}
 
+.keyboard_img_container {
+    width: fit-content;
+}
+
+.keyboard_img {
+    max-width: 50%;
 }
 
 .buttons {

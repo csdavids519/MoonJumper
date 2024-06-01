@@ -54,8 +54,10 @@ let spaceMan = {
     onFloor: false
 };
 
+// Game functions
 let score = 0;
 let scoreLast = 0;
+let gameEnd = false;
 
 // physics
 let velocityX = -2; // jumping objects moving left speed

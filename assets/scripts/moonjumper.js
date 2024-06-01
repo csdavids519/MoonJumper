@@ -57,7 +57,7 @@ let spaceMan = {
 // Game functions
 let score = 0;
 let scoreLast = 0;
-let gameEnd = false;
+let gameOver = false;
 
 // physics
 let velocityX = -2; // jumping objects moving left speed
@@ -104,6 +104,9 @@ window.onload = function () {
 // call animation frame to draw a rectangle to clear the previous frames
 function update() {
     requestAnimationFrame(update);
+    if (gameOver) {
+        return;
+    }
     context.clearRect(0, 0, board.width, board.height);
 
     // add gravity
@@ -145,6 +148,7 @@ function update() {
                 score += 5;
                 jumpObjectCurrent.passed = true;
             }
+
         } else if (jumpObjectCurrent.objectNumber == 2) {
             //lander 
             context.drawImage(landerImg, jumpObjectCurrent.x, jumpObjectCurrent.y, jumpObjectCurrent.width, jumpObjectCurrent.height);
@@ -156,8 +160,7 @@ function update() {
         }
 
         if (detectCollision(spaceMan, jumpObjectCurrent)) {
-            // gameOver = true;
-            console.log("collision!!")
+            gameOver = true;
         }
     }
 
@@ -175,7 +178,7 @@ function update() {
 
     // code copy
     //clear jumpObjects
-    while (jumpObjectArray.length > 0 && (jumpObjectArray[1].x < 0)) {
+    while (jumpObjectArray.length > 2 && (jumpObjectArray[1].x < 0)) {
         jumpObjectArray.shift(); //removes first element from the array
     }
 
@@ -192,6 +195,19 @@ function update() {
         context.font = "45px sans-serif";
         context.fillText(score, 5, 45);
     }
+
+    if (gameOver) {
+        context.fillStyle = "black";
+        context.fillRect(boardWidth / 2 - 100, 50, 400, 200)
+        context.fillStyle = "white";
+        context.font = "50px sans-serif";
+        context.fillText("GAME OVER", boardWidth / 2 - 100, 100);
+        context.font = "30px sans-serif";
+        context.fillText("Total Score:", boardWidth / 2 - 100, 150);
+        context.fillText(score, boardWidth / 2 + 200, 150);
+        context.font = "50px sans-serif";
+        context.fillText("Jump to retry!", boardWidth / 2 - 100, 200);
+    }
 }
 
 // function to add fuel to jet pack
@@ -206,6 +222,10 @@ function manageJetPack() {
  *************************/
 // function to create new objects to jump
 function placeJumpObjects() {
+    if (gameOver) {
+        return;
+    }
+
     let jumpGapFactorScore;
     let jumpObjectNum;
     let jumpObjectGap;
@@ -217,9 +237,6 @@ function placeJumpObjects() {
         width: 0,
         height: 0,
         passed: false,
-        debugJumpGap: 0, //DEBUG -REMOVE
-        debugJumpRan: 0,
-        debugJumpGapFactor: 0
     };
 
     // modify jump gap based on player score 
@@ -259,7 +276,6 @@ function placeJumpObjects() {
     let jumprand = randomJumpGap()
     jumpObjectGap = jumpObjectGapMin - jumprand;
     jumpObjectNum = randomJumpObjects();
-
 
     // check if array is empty
     let firstJumpObject = false;
@@ -304,9 +320,6 @@ function placeJumpObjects() {
             jumpObject.width = landerWidth;
             jumpObject.height = landerHeight;
         }
-        jumpObject.debugJumpGap = jumpObjectGap;
-        jumpObject.debugJumpRan = jumprand;
-        jumpObject.debugJumpGapFactor = jumpGapFactorScore;
 
         jumpObjectArray.push(jumpObject);
         console.table(jumpObjectArray);
@@ -322,7 +335,14 @@ function jumpSpaceMan(event) {
         //jump
         velocityY = -10;
     }
-    console.log("eventspace: ", event);
+
+    //reset game
+    if (gameOver) {
+        spaceMan.y = spaceManY;
+        jumpObjectArray = [];
+        score = 0;
+        gameOver = false;
+    }
 }
 
 function jetPackSpaceMan(event) {

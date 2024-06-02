@@ -199,7 +199,7 @@ function update() {
 
     if (gameOver) {
         context.fillStyle = "black";
-        context.fillRect(0, 0, boardHeight / 2, boardWidth)
+        context.fillRect(0, 0, boardHeight / 2, boardWidth);
         context.fillStyle = "white";
         context.font = "30px sans-serif";
         context.fillText("GAME OVER", 10, 100);
@@ -274,7 +274,7 @@ function placeJumpObjects() {
         return Math.floor(Math.random() * boardWidth / 2) + jumpGapFactorScore;
     }
 
-    let jumprand = randomJumpGap()
+    let jumprand = randomJumpGap();
     jumpObjectGap = jumpObjectGapMin - jumprand;
     jumpObjectNum = randomJumpObjects();
 
@@ -357,7 +357,6 @@ function jetPackSpaceMan(event) {
     if ((event.code == "ControlLeft" || event.type == "click") && fuelLevelCurrent < 0) {
         // rocket jump
         velocityY = -7;
-        keypress = 'ControlLeft';
 
         fuelLevelCurrent = Math.min(0, fuelLevelCurrent + 10);
     }

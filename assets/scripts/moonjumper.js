@@ -21,20 +21,12 @@ const spaceManX = boardWidth / 10;
 const spaceManY = boardFloor - spaceManHeight;
 let spaceManImg;
 
-//lander properties
-const landerWidth = 208;
-const landerHeight = 182;
-const landerX = boardWidth;
-const landerY = boardFloor - landerHeight;
-const landerCollisionBuffer = 10;
-let landerImg;
-
 //rock small properties
 const rockSmallWidth = 50;
 const rockSmallHeight = 60;
 const rockSmallX = boardWidth;
 const rockSmallY = boardFloor - rockSmallHeight;
-const rockSmallCollisionBuffer = 10;
+const rockSmallCollisionBuffer = rockSmallWidth / 4;
 let rockSmallImg;
 
 //rock large properties
@@ -42,8 +34,16 @@ const rockLargeWidth = 106;
 const rockLargeHeight = 100;
 const rockLargeX = boardWidth;
 const rockLargeY = boardFloor - rockLargeHeight;
-const rockLargeCollisionBuffer = 10;
+const rockLargeCollisionBuffer = rockLargeWidth / 4;
 let rockLargeImg;
+
+//lander properties
+const landerWidth = 208;
+const landerHeight = 182;
+const landerX = boardWidth;
+const landerY = boardFloor - landerHeight;
+const landerCollisionBuffer = landerWidth / 4;
+let landerImg;
 
 //jump objects array
 let jumpObjectArray = [0];

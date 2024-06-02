@@ -155,6 +155,7 @@ body {
     color: black;
     text-align: center;
     text-decoration: none;
+    user-select: none;
 }
 
 /* show / hide objects */
@@ -168,7 +169,6 @@ body {
 @media screen and (max-width: 768px) {
     .mobile_visible {
         display: block;
-        -webkit-tap-highlight-color: transparent;
     }
 
     .mobile_hidden {

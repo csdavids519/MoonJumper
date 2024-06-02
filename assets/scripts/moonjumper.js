@@ -201,15 +201,14 @@ function update() {
 
     if (gameOver) {
         context.fillStyle = "black";
-        context.fillRect(boardWidth / 2 - 100, 50, 400, 200)
+        context.fillRect(0, 0, boardHeight / 2, boardWidth)
         context.fillStyle = "white";
-        context.font = "50px sans-serif";
-        context.fillText("GAME OVER", boardWidth / 2 - 100, 100);
         context.font = "30px sans-serif";
-        context.fillText("Total Score:", boardWidth / 2 - 100, 150);
-        context.fillText(score, boardWidth / 2 + 200, 150);
-        context.font = "50px sans-serif";
-        context.fillText("Jump to retry!", boardWidth / 2 - 100, 200);
+        context.fillText("GAME OVER", 10, 100);
+        context.font = "30px sans-serif";
+        context.fillText("SCORE: " + score, 10, 150);
+        context.font = "30px sans-serif";
+        context.fillText("Jump to retry!", 10, 200);
     }
 }
 
@@ -384,4 +383,4 @@ function detectCollision(a, b) {
 // a.x < b.x + b.width && //a's top left corner doesn't reach b's top right corner
 //         a.x + a.width > b.x && //a's top right corner passes b's top left corner
 //         a.y < b.y + b.height && //a's top left corner doesn't reach b's bottom left corner
-//         a.y + a.height > b.y; //a's bottom left corner passes b's top left corner
+//         a.y + a.height > b.y; //a's bottom left corner passes b's top left corne

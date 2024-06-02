@@ -14,7 +14,7 @@ const fuelLevelX = 20;
 const fuelLevelY = boardFloor - 100;
 let fuelLevelCurrent = -100;
 
-//space man const properties
+//space man properties
 const spaceManWidth = 60;
 const spaceManHeight = 127;
 const spaceManX = boardWidth / 10;
@@ -67,9 +67,9 @@ let velocityX = -2; // jumping objects moving left speed
 let velocityY = 0; // spaceman jump speed - written by keypress event
 let gravity = 0.3;
 
-/****************
+/************************************************
  * ON WINDOW LOAD
- ****************/
+ ************************************************/
 window.onload = function () {
     board = document.getElementById("board");
     mobileJumpButton = document.getElementById("mobileJumpButton");
@@ -101,9 +101,9 @@ window.onload = function () {
     landerImg.src = "./assets/images/lander_small.png";
 };
 
-/************************
- * * UPDATE SCREEN 
- ************************/
+/************************************************
+ *  UPDATE SCREEN 
+ ************************************************/
 // call animation frame to draw a rectangle to clear the previous frames
 function update() {
     requestAnimationFrame(update);
@@ -179,13 +179,11 @@ function update() {
     // call place new objects
     placeJumpObjects();
 
-    // code copy
     //clear jumpObjects
     while (jumpObjectArray.length > 2 && (jumpObjectArray[1].x < 0)) {
         jumpObjectArray.shift(); //removes first element from the array
     }
 
-    //code copy - edit
     //score
     if (scoreLast !== score && score > 0) {
         scoreLast = score;
@@ -219,9 +217,9 @@ function manageJetPack() {
     }
 }
 
-/*************************
+/************************************************
  * PLACE NEW JUMP OBJECTS
- *************************/
+ ************************************************/
 // function to create new objects to jump
 function placeJumpObjects() {
     if (gameOver) {
@@ -295,8 +293,8 @@ function placeJumpObjects() {
         jumpObject.width = rockSmallWidth;
         jumpObject.height = rockSmallHeight;
 
+        //push to array
         jumpObjectArray.push(jumpObject);
-        console.table(jumpObjectArray);
     }
 
     /**********************************
@@ -331,14 +329,14 @@ function placeJumpObjects() {
             jumpObject.height = landerHeight;
         }
 
+        //push to array
         jumpObjectArray.push(jumpObject);
-        console.table(jumpObjectArray);
     }
 }
 
-/************************
+/************************************************
  * MANAGE KEY PRESS EVENT
- *************************/
+ ************************************************/
 // add key stroke controls
 function jumpSpaceMan(event) {
     if ((event.code == "Space" || event.type == "click") && spaceMan.onFloor) {
@@ -365,22 +363,16 @@ function jetPackSpaceMan(event) {
     }
 }
 
-/************************
+/************************************************
  * MANAGE OBJECT COLLISION
- *************************/
-// code copy ImKennyYip
+ ************************************************/
 function detectCollision(a, b) {
     let c = (b.x + b.collisionBuffer); // c is b.x with collision buffer amount added 
     let d = (b.y + b.collisionBuffer); // d is b.y with collision buffer amount added
     let e = ((b.x + b.width) - b.collisionBuffer); // e is b.width less collision buttfer amount
-    // console.log(c, d, b.x, b.y, b.collisionBuffer);
+
     return a.x < e && //a's top left corner doesn't reach b's top right corner
         a.x + a.width > c && //a's top right corner passes b's top left corner
         a.y < d + b.height && //a's top left corner doesn't reach b's bottom left corner
         a.y + a.height > d; //a's bottom left corner passes b's top left corner
 }
-
-// a.x < b.x + b.width && //a's top left corner doesn't reach b's top right corner
-//         a.x + a.width > b.x && //a's top right corner passes b's top left corner
-//         a.y < b.y + b.height && //a's top left corner doesn't reach b's bottom left corner
-//         a.y + a.height > b.y; //a's bottom left corner passes b's top left corne

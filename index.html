@@ -13,7 +13,7 @@
 </head>
 
 <body class="startbg">
-    <div class="splash_welcome active">
+    <div class="splash splash_welcome active">
         <h1>Moon Jumper</h1>
         <h2>Welcome to Moon Jumper!</h2>
         <p>Jump over the objects to survive on the moon. </p>
@@ -21,7 +21,7 @@
             and needs some time to recharge.</p>
     </div>
 
-    <div class="splash_howtoplay">
+    <div class="splash splash_howtoplay">
         <h1>Moon Jumper</h1>
         <p>Jump over the objects to stay alive.</p>
         <p>Use Space bar to jump from the moon surface.</p>
@@ -30,7 +30,8 @@
             come faster and faster.</p>
     </div>
 
-    <div class="splash_overview">
+    <!-- hint boxes -->
+    <div class="splash splash_controls">
         <div class="info_box info_box_1">1</div>
         <div class="info_box info_box_2">2</div>
         <div class="info_box info_box_3">3</div>
@@ -40,6 +41,7 @@
         <img src="./assets/images/gamepreview_small.png" alt="snap shot of game play" class="previewImg">
     </div>
 
+    <!-- Modals -->
     <dialog class="modal gamehint_fuel" id="modal">
         <p>This is your jet pack fuel level, keep an eye so you dont run out!</p>
         <p>Your jet pack will recharge automatically but it needs some time.</p>
@@ -76,23 +78,21 @@
         <button class="close_modal modalclose_score">Exit</button>
     </dialog>
 
-    <div class="buttons">
-        <div class="startgamebutton">
+    <!-- Buttons -->
+    <div class="container_buttons">
+        <div class="button active">
             <a href="gameboard.html" aria-label="jump to the game board">
                 <p>Start Moon Jumper</p>
             </a>
         </div>
-        <div id="howToButton" class="howToButton active">
+        <div id="howToButton" class="howToButton button active">
             <p>How To Play</p>
-            </a>
         </div>
-        <div id="backButton" class="backButton">
+        <div id="backButton" class="backButton button">
             <p>back</p>
-            </a>
         </div>
-        <div id="gamePreviewButton" class="gamePreviewButton">
+        <div id="gameControlsButton" class="gameControlsButton button">
             <p>See Game Controls</p>
-            </a>
         </div>
     </div>
 </body>

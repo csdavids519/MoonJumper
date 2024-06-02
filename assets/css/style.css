@@ -11,6 +11,14 @@ body {
     background-color: darkgray;
 }
 
+/* game board */
+#board {
+    background-color: skyblue;
+    background-image: url("../../assets/images/vecteezy_moon_background.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 .startbg {
     background-image: url("../../assets/images/vecteezy_moon_background.png");
     background-repeat: no-repeat;
@@ -20,20 +28,7 @@ body {
     align-items: center;
 }
 
-.howtobg {
-    background-image: url("../../assets/images/gameinstructions.png");
-    background-repeat: no-repeat;
-    background-size: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 80%;
-    max-height: 80%;
-}
-
-.splash_overview,
-.splash_welcome,
-.splash_howtoplay {
+.splash {
     position: relative;
     width: 100%;
     top: 30%;
@@ -47,20 +42,16 @@ body {
     object-fit: contain;
 }
 
-.splash_howtoplay h1,
-.splash_welcome h1 {
+.splash h1 {
     font-size: 60px;
     color: coral;
 }
 
-.splash_howtoplay h2,
-.splash_welcome h2 {
+.splash h2 {
     color: coral;
 }
 
-.splash_overview p,
-.splash_howtoplay p,
-.splash_welcome p {
+.splash p {
     padding: 5px 25px;
     font-size: 20px;
     top: 500px;
@@ -111,6 +102,7 @@ body {
     left: 25px;
 }
 
+/* modals */
 .modal {
     background-color: coral;
     font-size: 20px;
@@ -140,7 +132,8 @@ body {
     max-width: 50%;
 }
 
-.buttons {
+/* buttons */
+.container_buttons {
     display: flex;
     width: 100%;
     max-width: 800px;
@@ -148,25 +141,7 @@ body {
     text-transform: uppercase;
 }
 
-.buttons_game_board {
-    display: flex;
-    width: 100%;
-    justify-content: space-around;
-    text-transform: uppercase;
-}
-
-.homebutton,
-.startgamebutton {
-    width: 150px;
-    background-color: coral;
-    border-radius: 10px;
-    border: 2px solid #000000;
-    cursor: pointer;
-}
-
-.gamePreviewButton,
-.howToButton,
-.backButton {
+.button {
     width: 150px;
     background-color: coral;
     border-radius: 10px;
@@ -175,22 +150,14 @@ body {
     display: none;
 }
 
-.homebutton a,
-.gamePreviewButton a,
-.startgamebutton a,
-#howToButton a {
+.button a,
+.button p {
     color: black;
     text-align: center;
     text-decoration: none;
 }
 
-#board {
-    background-color: skyblue;
-    background-image: url("../../assets/images/vecteezy_moon_background.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
+/* show / hide objects */
 .active {
     display: block;
 }

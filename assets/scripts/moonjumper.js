@@ -199,7 +199,7 @@ function update() {
 
     if (gameOver) {
         context.fillStyle = "black";
-        context.fillRect(0, 0, boardHeight / 2, boardWidth);
+        context.fillRect(0, 0, boardWidth, boardHeight / 2);
         context.fillStyle = "white";
         context.font = "30px sans-serif";
         context.fillText("GAME OVER", 10, 100);

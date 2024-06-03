@@ -75,18 +75,21 @@ Moon Jumper is a simple game where players can test their skills avoiding danger
 
 ### Code Validation Tests 
 - See below the results of the JS, HTML and CSS validators.
-
+#### HTML Validation Index
 ![HTML Validation Index](documentation/Images/validatorhtml_index.png)
 
+#### HTML Validation Game Board
 !![HTML Validation Game board](documentation/Images/validatorhtml_gameboard.png)
 
+#### CSS Validation
 ![CSS Validation](documentation/Images/validatorhtml_css.png)
 
+#### JS Hints Index - No warnings or errors found.
 ![JS Hints Index](documentation/Images/jshint_index.png)
 no warnings or errors found. 
 
+#### JS Hints Moon Jumper - No warnings or errors found.
 ![JS Hints Moon Jumper](documentation/Images/jshint_moonjumper.png)
-no warnings or errors found.
 
 
 ### Resolved Bugs / Known Issues
@@ -104,12 +107,10 @@ no warnings or errors found.
 ---
 ## Credits
 
- ### Content
-
  ### Media
 - [OpenArt](https://openart.ai/home) was used to develop the game play images for the 'space man', and jump objects.
 - [Vecteezy](https://www.vecteezy.com/) provided the image used for the game board background.
-- [Pngtree] (https://pngtree.com/freepng/computer-keyboard-transparent_8957497.html) provided the image of a keyboard layout used for the came controls hints.
+- [Pngtree](https://pngtree.com/freepng/computer-keyboard-transparent_8957497.html) provided the image of a keyboard layout used for the came controls hints.
 
 ### Acknowledgments
 - [Iuliia Konovalova](https://github.com/IuliiaKonovalova) Who has been a knowledgeable and encouraging mentor on this project.

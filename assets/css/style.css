@@ -1,10 +1,3 @@
-/*  wildcard selector to override default styles adds by the browser  */
-/* * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-} */
-
 body {
     font-family: 'Courier New', Courier, monospace;
     text-align: center;
@@ -141,6 +134,13 @@ body {
     text-transform: uppercase;
 }
 
+.container_buttons_game_board {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    text-transform: uppercase;
+}
+
 .button {
     width: 150px;
     background-color: coral;
@@ -150,6 +150,16 @@ body {
     display: none;
 }
 
+.back_button_mobile {
+    width: 50px;
+    background-color: coral;
+    border-radius: 10px;
+    border: 2px solid #000000;
+    cursor: pointer;
+}
+
+.back_button_mobile a,
+.back_button_mobile p,
 .button a,
 .button p {
     color: black;

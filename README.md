@@ -23,10 +23,10 @@ Moon Jumper is a simple game where players can test their skills avoiding danger
 ### First Time Visitor Goals:
 - Game instructions are easy to find and understand.
 - Game rules are easy to find and understand.
-- Navagating to game information and game play screen is simple.
+- Navigating to game information and game play screen is simple.
 
 ### Returning Visitor Goals:
-- Returing visitors fimiliar with game rules and controls should have quick access to the game area.
+- Returning visitors familiar with game rules and controls should have quick access to the game area.
 
 ---
 ## Features
@@ -53,7 +53,7 @@ Moon Jumper is a simple game where players can test their skills avoiding danger
 
 ### Color Scheme
 - The color scheme for the welcome and how to pages was chosen for high contrast and fun look.
-- The gray scale color scheme of the game board was chosen to set the mood of the moon setting consistant with the game story. 
+- The gray scale color scheme of the game board was chosen to set the mood of the moon setting consistent with the game story. 
 
 
 ## Testing
@@ -68,35 +68,25 @@ Moon Jumper is a simple game where players can test their skills avoiding danger
 ### Light House Tests
 - See below for Chrome Light House test results on each web page.
 
+![Light House Index](documentation/Images/lighthouse_index.png)
 
-
-
-
-
-TBD
-
-
-
-
-
-
+![Light House Game board](documentation/Images/lighthouse_gameboard.png)
 
 
 ### Code Validation Tests 
-- See below the results of the HTML and CSS validators.
+- See below the results of the JS, HTML and CSS validators.
 
+![HTML Validation Index](documentation/Images/validatorhtml_index.png)
 
+!![HTML Validation Game board](documentation/Images/validatorhtml_gameboard.png)
 
+![CSS Validation](documentation/Images/validatorhtml_css.png)
 
+![JS Hints Index](documentation/Images/jshint_index.png)
+no warnings or errors found. 
 
-
-
-
-TBD
-
-
-
-
+![JS Hints Moon Jumper](documentation/Images/jshint_moonjumper.png)
+no warnings or errors found.
 
 
 ### Resolved Bugs / Known Issues
@@ -107,8 +97,9 @@ TBD
 
 ### Future improvements
 - Improve animations during game play, such as updating score count.
-- Add more complicated varriation to game play to manage game diffulity, such as managing what size jump objects come and how often.
+- Add more complicated variation to game play to manage game difficulty, such as managing what size jump objects come and how often.
 - Add animations to the 'Space Man' to display new action when jumping or using jet pack.
+- Attention can be taken to improve the Google Lighthouse performance score. 
 
 ---
 ## Credits
@@ -122,13 +113,13 @@ TBD
 
 ### Acknowledgments
 - [Iuliia Konovalova](https://github.com/IuliiaKonovalova) Who has been a knowledgeable and encouraging mentor on this project.
-- [Kevin Powell](https://www.youtube.com/@KevinPowell) Who provided lessons on using CSS moduals.
-- [ImKennyYip](https://github.com/ImKennyYip/flappy-bird?tab=readme-ov-file) This project has been based on the lessons learned from ImKennyYip's YouTube turtorial on how to make Flappy Bird.
+- [Kevin Powell](https://www.youtube.com/@KevinPowell) Who provided lessons on using CSS modals.
+- [ImKennyYip](https://github.com/ImKennyYip/flappy-bird?tab=readme-ov-file) This project has been based on the lessons learned from ImKennyYip's YouTube tutorial on how to make Flappy Bird.
 - [GitHub](https://pages.github.com/) Pages for free hosting of the live site. 
 - [w3school](https://www.w3schools.com) Was used as a reference for all html, css, and javascript questions.
 - [Text compare](www.textcompare.org) used to compare Moon Jumper to the reference Flappy Bird project.
 
 ## ImKennyYip Flappy Bird
 Moon Jumper is based on ImKennyYip's version of Flappy Bird.
-See a side to side code comparision of the two projects here [Flappy Bird code compare](https://www.textcompare.org/javascript/?id=665c29f374842dd2bc031234).
-See link for detailed code referencs
+See a side to side code comparison of the two projects here [Flappy Bird code compare](https://www.textcompare.org/javascript/?id=665c29f374842dd2bc031234).
+See link for detailed code references.

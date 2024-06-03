@@ -108,7 +108,6 @@ You live site can be found here: [Moon Jumper](https://csdavids519.github.io/Moo
 
 #### JS Hints Index - No warnings or errors found.
 ![JS Hints Index](documentation/Images/jshint_index.png)
-no warnings or errors found. 
 
 #### JS Hints Moon Jumper - No warnings or errors found.
 ![JS Hints Moon Jumper](documentation/Images/jshint_moonjumper.png)
@@ -145,4 +144,3 @@ no warnings or errors found.
 ## ImKennyYip Flappy Bird
 Moon Jumper is based on ImKennyYip's version of Flappy Bird.
 See a side to side code comparison of the two projects here [Flappy Bird code compare](https://www.textcompare.org/javascript/?id=665c29f374842dd2bc031234).
-See link for detailed code references.

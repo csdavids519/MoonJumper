@@ -4,6 +4,11 @@
 
 Moon Jumper is a simple game where players can test their skills avoiding dangerous objects on the surface of the moon. First time visitors are greeted at the welcome page with the option to view game rules, game controls, and other game hints.
 
+You live site can be found here: [Moon Jumper](https://csdavids519.github.io/MoonJumper/)
+
+
+![Responsive](documentation/Images/amiresponsive.png)
+
 
 ### Deployment to GitHub Pages
 
@@ -15,7 +20,6 @@ Moon Jumper is a simple game where players can test their skills avoiding danger
     - Once the master branch has been selected, the page will be automatically refreshed with a detailed ribbon display to indicate the successful deployment.
 
 - The repository on Git Hub can be found at this link: [GitHub repository](https://github.com/csdavids519/MoonJumper)
-
 
 ---
 ## User Stories
@@ -33,12 +37,30 @@ Moon Jumper is a simple game where players can test their skills avoiding danger
 - Users are greeted with a welcome page that will also display the game rules and hints.
 - Clicking the start game button will bring users to the game board scree, where a game board is created relative to the users screen size. 
 
+
+### Welcome page
+- Welcome page to all users, link provided for new users to learn game rules and game controls.
+
+![Welcome page](documentation/Images/welcome_small.png)
+
+### Controls / Game info page
+- Here users can read more about the game functions and learn about the game controls.
+
+![Welcome page](documentation/Images/controlshints_small.png)
+
+
+### Game board
+  - Visit the game board page to play Moon Jumper.
+
+![Welcome page](documentation/Images/gameboard_small.png)
+
+
 ## Technologies Used
 - [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML) was used as the foundation of the site.
 - [CSS](https://developer.mozilla.org/en-US/docs/Web/css) - was used to add the styles and layout of the site.
 - [VSCode](https://code.visualstudio.com/) was used as the code editor.
 - [GitHub](https://github.com/) was used to host the code of the website.
-- [SourceTree](https://sourcetree.com) was used to manage the version control.
+- [SourceTree](https://www.sourcetreeapp.com/) was used to manage the version control.
 - [GIMP](https://www.gimp.org/) was used to edit and resize images.
 - [OpenArt](https://openart.ai/home) was used to develop the game play images used.  
 - Google Dev Tools was used for website testing.
@@ -79,7 +101,7 @@ Moon Jumper is a simple game where players can test their skills avoiding danger
 ![HTML Validation Index](documentation/Images/validatorhtml_index.png)
 
 #### HTML Validation Game Board
-!![HTML Validation Game board](documentation/Images/validatorhtml_gameboard.png)
+![HTML Validation Game board](documentation/Images/validatorhtml_gameboard.png)
 
 #### CSS Validation
 ![CSS Validation](documentation/Images/validatorhtml_css.png)
@@ -118,7 +140,7 @@ no warnings or errors found.
 - [ImKennyYip](https://github.com/ImKennyYip/flappy-bird?tab=readme-ov-file) This project has been based on the lessons learned from ImKennyYip's YouTube tutorial on how to make Flappy Bird.
 - [GitHub](https://pages.github.com/) Pages for free hosting of the live site. 
 - [w3school](https://www.w3schools.com) Was used as a reference for all html, css, and javascript questions.
-- [Text compare](www.textcompare.org) used to compare Moon Jumper to the reference Flappy Bird project.
+- [Text compare](https://www.textcompare.org/) used to compare Moon Jumper to the reference Flappy Bird project.
 
 ## ImKennyYip Flappy Bird
 Moon Jumper is based on ImKennyYip's version of Flappy Bird.

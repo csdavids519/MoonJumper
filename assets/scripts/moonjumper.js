@@ -368,7 +368,7 @@ function jetPackSpaceMan(event) {
 function detectCollision(a, b) {
     let c = (b.x + b.collisionBuffer); // c is b.x with collision buffer amount added 
     let d = (b.y + b.collisionBuffer); // d is b.y with collision buffer amount added
-    let e = ((b.x + b.width) - b.collisionBuffer); // e is b.width less collision buttfer amount
+    let e = ((b.x + b.width) - b.collisionBuffer); // e is b.width less collision buffer amount
 
     return a.x < e && //a's top left corner doesn't reach b's top right corner
         a.x + a.width > c && //a's top right corner passes b's top left corner

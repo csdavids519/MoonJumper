@@ -86,19 +86,19 @@ window.onload = function () {
 
     //load images
     spaceManImg = new Image();
-    spaceManImg.src = "/assets/images/spaceman.png";
+    spaceManImg.src = "./assets/images/spaceman.png";
     spaceManImg.onload = function () {
         context.drawImage(spaceManImg, spaceMan.x, spaceMan.y, spaceMan.width, spaceMan.height);
     };
 
     rockSmallImg = new Image();
-    rockSmallImg.src = "/assets/images/rock_small.png";
+    rockSmallImg.src = "./assets/images/rock_small.png";
 
     rockLargeImg = new Image();
-    rockLargeImg.src = "/assets/images/rock_large.png";
+    rockLargeImg.src = "./assets/images/rock_large.png";
 
     landerImg = new Image();
-    landerImg.src = "/assets/images/lander_small.png";
+    landerImg.src = "./assets/images/lander_small.png";
 };
 
 /************************************************
@@ -215,7 +215,7 @@ function manageJetPack() {
     if (fuelLevelCurrent <= 0 && fuelLevelCurrent > -100) {
         fuelLevelCurrent = fuelLevelCurrent - 10;
     }
-} 
+}
 
 /************************************************
  * PLACE NEW JUMP OBJECTS

@@ -1,16 +1,16 @@
 # *Moon Jumper*
 ---
-![MoonJumperLogo](documentation/Images/logo.png)
+![MoonJumperLogo](documentation/images/logo.png)
 
 Moon Jumper is a simple game where players can test their skills avoiding dangerous objects on the surface of the moon. First time visitors are greeted at the welcome page with the option to view game rules, game controls, and other game hints.
 
 You live site can be found here: [Moon Jumper](https://csdavids519.github.io/MoonJumper/)
 
 
-![Responsive](documentation/Images/amiresponsive.png)
+![Responsive](documentation/images/amiresponsive.png)
 
 
-### Deployment to GitHub Pages
+## Deployment to GitHub Pages
 
 - The live site was deployed to GitHub pages. 
 
@@ -41,23 +41,24 @@ You live site can be found here: [Moon Jumper](https://csdavids519.github.io/Moo
 ### Welcome page
 - Welcome page to all users, link provided for new users to learn game rules and game controls.
 
-![Welcome page](documentation/Images/welcome_small.png)
+![Welcome page](documentation/images/welcome_small.png)
 
 ### Controls / Game info page
 - Here users can read more about the game functions and learn about the game controls.
 
-![Welcome page](documentation/Images/controlshints_small.png)
+![Controls page](documentation/images/controlshints_small.png)
 
 
 ### Game board
   - Visit the game board page to play Moon Jumper.
 
-![Welcome page](documentation/Images/gameboard_small.png)
+![Game page](documentation/images/gameboard_small.png)
 
 
 ## Technologies Used
 - [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML) was used as the foundation of the site.
 - [CSS](https://developer.mozilla.org/en-US/docs/Web/css) - was used to add the styles and layout of the site.
+- [JavaScript](https://www.javascript.com/) - was used to create the game functions.
 - [VSCode](https://code.visualstudio.com/) was used as the code editor.
 - [GitHub](https://github.com/) was used to host the code of the website.
 - [SourceTree](https://www.sourcetreeapp.com/) was used to manage the version control.
@@ -74,13 +75,16 @@ You live site can be found here: [Moon Jumper](https://csdavids519.github.io/Moo
 ## Design
 
 ### Color Scheme
-- The color scheme for the welcome and how to pages was chosen for high contrast and fun look.
+![Color Pallet](documentation/images/colorpallet.png)
+
+- The color scheme and font for the welcome and how to pages was chosen for high contrast and fun look and easy readability.
 - The gray scale color scheme of the game board was chosen to set the mood of the moon setting consistent with the game story. 
 
 
 ## Testing
 
-### Manual Tests
+### Tests
+ - testing the responsiveness of the website Google Chrome dev tools was used. 
  - All buttons and links were tested on multiple devices.
  - All clickable links have been checked for a change in mouse pointer. 
  - Screen size responsiveness was tested on multiple devices and using Google Dev Tools.
@@ -90,31 +94,34 @@ You live site can be found here: [Moon Jumper](https://csdavids519.github.io/Moo
 ### Light House Tests
 - See below for Chrome Light House test results on each web page.
 
-![Light House Index](documentation/Images/lighthouse_index.png)
+![Light House Index](documentation/images/lighthouse_index.png)
 
-![Light House Game board](documentation/Images/lighthouse_gameboard.png)
+![Light House Game board](documentation/images/lighthouse_gameboard.png)
 
 
 ### Code Validation Tests 
 - See below the results of the JS, HTML and CSS validators.
 #### HTML Validation Index
-![HTML Validation Index](documentation/Images/validatorhtml_index.png)
+![HTML Validation Index](documentation/images/validatorhtml_index.png)
 
 #### HTML Validation Game Board
-![HTML Validation Game board](documentation/Images/validatorhtml_gameboard.png)
+![HTML Validation Game board](documentation/images/validatorhtml_gameboard.png)
 
 #### CSS Validation
-![CSS Validation](documentation/Images/validatorhtml_css.png)
+![CSS Validation](documentation/images/validatorhtml_css.png)
 
 #### JS Hints Index - No warnings or errors found.
-![JS Hints Index](documentation/Images/jshint_index.png)
+![JS Hints Index](documentation/images/jshint_index.png)
 
 #### JS Hints Moon Jumper - No warnings or errors found.
-![JS Hints Moon Jumper](documentation/Images/jshint_moonjumper.png)
+![JS Hints Moon Jumper](documentation/images/jshint_moonjumper.png)
 
 
 ### Resolved Bugs / Known Issues
-- At time of final publish no bugs exist.
+- While adding multiple jump objects, the issue arose that no objects would get displayed. This is because at game load the jump objects array is empty and the first check is to see what object is loaded.
+The solution was to create a "first jump object", on game start a "small rock" jump object is loaded to the first line of the jump array. Once the first object is loaded the random objects can be created to the jump object array.
+
+- The jump object array would not get cleared after objects passed the game board. This was due to the first line in the array having a different format and no screen position to measure. The solution was to remove the first array line by checking the second array line. when the second object passed a screen position limit the first object is removed from the array.
 
 ### Open Bugs / Issues
 - No open software bugs or issues are found.
@@ -124,6 +131,7 @@ You live site can be found here: [Moon Jumper](https://csdavids519.github.io/Moo
 - Add more complicated variation to game play to manage game difficulty, such as managing what size jump objects come and how often.
 - Add animations to the 'Space Man' to display new action when jumping or using jet pack.
 - Attention can be taken to improve the Google Lighthouse performance score. 
+- Make all game difficulty parameter and image sizes responsive to the users screen for consistent pay experience.
 
 ---
 ## Credits

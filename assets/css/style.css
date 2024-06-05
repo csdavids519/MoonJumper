@@ -7,13 +7,13 @@ body {
 /* game board */
 #board {
     background-color: skyblue;
-    background-image: url("assets/images/vecteezy_moon_background.png");
+    background-image: url("../images/vecteezy_moon_background.png");
     background-repeat: no-repeat;
     background-size: cover;
 }
 
 .startbg {
-    background-image: url("./assets/images/vecteezy_moon_background.png");
+    background-image: url("../images/vecteezy_moon_background.png");
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;

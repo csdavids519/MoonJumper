@@ -60,6 +60,7 @@ let spaceMan = {
 // Game functions
 let score = 0;
 let scoreLast = 0;
+// Code reference from ImKennyYip 'gameOver' functions see code compare in ReadMe.
 let gameOver = false;
 
 // physics
@@ -105,6 +106,7 @@ window.onload = function () {
  *  UPDATE SCREEN 
  ************************************************/
 // call animation frame to draw a rectangle to clear the previous frames
+// Code reference modified from ImKennyYip line 108 - line 114 see code compare in ReadMe file
 function update() {
     requestAnimationFrame(update);
     if (gameOver) {
@@ -366,6 +368,7 @@ function jetPackSpaceMan(event) {
 /************************************************
  * MANAGE OBJECT COLLISION
  ************************************************/
+//Code reference from ImKennyYip modified 'detectCollision' see code compare in ReadMe.
 function detectCollision(a, b) {
     let c = (b.x + b.collisionBuffer); // c is b.x with collision buffer amount added 
     let d = (b.y + b.collisionBuffer); // d is b.y with collision buffer amount added

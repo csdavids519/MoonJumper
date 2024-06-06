@@ -86,6 +86,7 @@ window.onload = function () {
     mobileJetPackButton.addEventListener("click", jetPackSpaceMan);
 
     //load images
+    //// Code reference from ImKennyYip modified 'load images' see code compare in ReadMe.
     spaceManImg = new Image();
     spaceManImg.src = "./assets/images/spaceman.png";
     spaceManImg.onload = function () {
@@ -106,7 +107,7 @@ window.onload = function () {
  *  UPDATE SCREEN 
  ************************************************/
 // call animation frame to draw a rectangle to clear the previous frames
-// Code reference modified from ImKennyYip line 108 - line 114 see code compare in ReadMe file
+// Code reference modified from ImKennyYip see code compare in ReadMe file
 function update() {
     requestAnimationFrame(update);
     if (gameOver) {

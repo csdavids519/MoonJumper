@@ -29,7 +29,7 @@ const closeModalScore = document.querySelector(".modalclose_score");
 
 
 /********************
- * Manage event listiners and add remove classes
+ * Manage event listeners and add remove classes
  ********************/
 
 // click how to play button display new text and back button, hide welcome text and how to button

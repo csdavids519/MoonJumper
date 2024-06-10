@@ -85,11 +85,14 @@ You live site can be found here: [Moon Jumper](https://csdavids519.github.io/Moo
 ## Testing
 
 ### Tests
- - Testing the responsiveness of the website [Responsive Design Checker](https://responsivedesignchecker.com/) was used to view the site on multiple screen sizes. 
+ - Screen size responsiveness of the website [Responsive Design Checker](https://responsivedesignchecker.com/) was used to view the site on multiple screen sizes.
+    - The site responded as expected on all screen sizes, the game board is able to adjust to the screen size on page load.
  - All buttons and links were tested on multiple devices.
+    - All buttons are working as expected and linked to the correct locations.
  - All clickable links have been checked for a change in mouse pointer. 
- - Screen size responsiveness was tested on multiple devices and using Google Dev Tools.
+    - All buttons change the mouse pointer as expected on all links
  - All pages have been checked in multiple browser types including Chrome, Firefox, Edge
+    - Moon Jumper is running without issues in all browsers tested
 
 
 ### Light House Tests

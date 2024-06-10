@@ -4,7 +4,7 @@
 
 Moon Jumper is a simple game where players can test their skills avoiding dangerous objects on the surface of the moon. First time visitors are greeted at the welcome page with the option to view game rules, game controls, and other game hints.
 
-You live site can be found here: [Moon Jumper](https://csdavids519.github.io/MoonJumper/)
+The live site can be found here: [Moon Jumper](https://csdavids519.github.io/MoonJumper/)
 
 
 ![Responsive](documentation/images/amiresponsive.png)

@@ -68,9 +68,9 @@ let velocityX = -2; // jumping objects moving left speed
 let velocityY = 0; // spaceman jump speed - written by keypress event
 let gravity = 0.3;
 
-/************************************************
- * ON WINDOW LOAD
- ************************************************/
+/**
+ * ON WINDOW LOAD - create game board on window load
+ **/
 window.onload = function () {
     board = document.getElementById("board");
     mobileJumpButton = document.getElementById("mobileJumpButton");
@@ -103,9 +103,9 @@ window.onload = function () {
     landerImg.src = "./assets/images/lander_small.png";
 };
 
-/************************************************
- *  UPDATE SCREEN 
- ************************************************/
+/**
+ *  UPDATE SCREEN - upadate game board image recursively
+ **/
 // call animation frame to draw a rectangle to clear the previous frames
 // Code reference modified from ImKennyYip see code compare in ReadMe file
 function update() {
@@ -220,9 +220,9 @@ function manageJetPack() {
     }
 }
 
-/************************************************
+/**
  * PLACE NEW JUMP OBJECTS
- ************************************************/
+ **/
 // function to create new objects to jump
 function placeJumpObjects() {
     if (gameOver) {
@@ -300,9 +300,9 @@ function placeJumpObjects() {
         jumpObjectArray.push(jumpObject);
     }
 
-    /**********************************
+    /**
      * LOAD NEW JUMP OBJECT TO ARRAY
-     **********************************/
+     **/
     // check last jump object has passed gap distance
     if ((jumpObjectArray[jumpObjectArray.length - 1].x + jumpObjectArray[jumpObjectArray.length - 1].width) < jumpObjectGap) {
         // create new object at starting position 
@@ -337,9 +337,9 @@ function placeJumpObjects() {
     }
 }
 
-/************************************************
+/**
  * MANAGE KEY PRESS EVENT
- ************************************************/
+ **/
 // add key stroke controls
 function jumpSpaceMan(event) {
     if ((event.code == "Space" || event.type == "click") && spaceMan.onFloor) {
@@ -366,9 +366,9 @@ function jetPackSpaceMan(event) {
     }
 }
 
-/************************************************
+/**
  * MANAGE OBJECT COLLISION
- ************************************************/
+ **/
 //Code reference from ImKennyYip modified 'detectCollision' see code compare in ReadMe.
 function detectCollision(a, b) {
     let c = (b.x + b.collisionBuffer); // c is b.x with collision buffer amount added 

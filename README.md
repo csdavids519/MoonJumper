@@ -66,6 +66,7 @@ You live site can be found here: [Moon Jumper](https://csdavids519.github.io/Moo
 - [OpenArt](https://openart.ai/home) was used to develop the game play images used.  
 - Google Dev Tools was used for website testing.
 - Google Light House was used for website testing.
+- [Responsive Design Checker](https://responsivedesignchecker.com/) was used to check the responsiveness of the site on multiple screen sizes.
 - [Am I responsive](https://ui.dev/amiresponsive) was used to generate an image of the site on different screen sizes.
 - [Markup Validation Service](https://validator.w3.org/) Was used to validate the HTML code.
 - [CSS Validation Service](https://jigsaw.w3.org/css-validator/) Was used to validate the CSS code.
@@ -84,7 +85,7 @@ You live site can be found here: [Moon Jumper](https://csdavids519.github.io/Moo
 ## Testing
 
 ### Tests
- - testing the responsiveness of the website Google Chrome dev tools was used. 
+ - Testing the responsiveness of the website [Responsive Design Checker](https://responsivedesignchecker.com/) was used to view the site on multiple screen sizes. 
  - All buttons and links were tested on multiple devices.
  - All clickable links have been checked for a change in mouse pointer. 
  - Screen size responsiveness was tested on multiple devices and using Google Dev Tools.
@@ -94,8 +95,10 @@ You live site can be found here: [Moon Jumper](https://csdavids519.github.io/Moo
 ### Light House Tests
 - See below for Chrome Light House test results on each web page.
 
+#### Index page:
 ![Light House Index](documentation/images/lighthouse_index.png)
 
+#### Game board page:
 ![Light House Game board](documentation/images/lighthouse_gameboard.png)
 
 

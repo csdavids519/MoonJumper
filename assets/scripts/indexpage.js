@@ -28,9 +28,9 @@ const closeModalJumpObject = document.querySelector(".modalclose_jumpobject");
 const closeModalScore = document.querySelector(".modalclose_score");
 
 
-/********************
+/**
  * Manage event listeners and add remove classes
- ********************/
+ **/
 
 // click how to play button display new text and back button, hide welcome text and how to button
 howToButtonEl.addEventListener('click', () => {
@@ -60,9 +60,9 @@ backButtonEl.addEventListener('click', () => {
 });
 
 
-/********************
- * Manage Modals
- ********************/
+/**
+ * Manage Modals - call correct modal on click event
+ **/
 openModalFuel.addEventListener('click', () => {
     modalFuel.showModal();
 });
